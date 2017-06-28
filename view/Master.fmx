@@ -1,0 +1,521 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 486
+  ClientWidth = 517
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 0
+  object tbc1: TTabControl
+    Align = Client
+    Size.Width = 517.000000000000000000
+    Size.Height = 486.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 0
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    Sizes = (
+      517s
+      460s
+      517s
+      460s)
+    object tbtm1: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 41.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Info'
+      object lytFileName: TLayout
+        Align = Top
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 5.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Size.Width = 517.000000000000000000
+        Size.Height = 27.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 9
+        object lblFileName: TLabel
+          Align = Left
+          Margins.Right = 5.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'File:'
+        end
+        object edtFileName: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 1
+          Size.Width = 385.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Delphinus.Info.json'
+          object btnFileNameOpen: TEditButton
+            CanFocus = False
+            Cursor = crArrow
+            Size.Width = 50.000000000000000000
+            Size.Height = 19.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = 'Open'
+            OnClick = btnFileNameOpenClick
+          end
+          object btnFileNameSave: TEditButton
+            CanFocus = False
+            Cursor = crArrow
+            Margins.Right = 5.000000000000000000
+            Position.X = 50.000000000000000000
+            Size.Width = 50.000000000000000000
+            Size.Height = 19.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            Text = 'Save'
+            OnClick = btnFileNameSaveClick
+          end
+        end
+      end
+      object lytID: TLayout
+        Align = Top
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 5.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Position.Y = 27.000000000000000000
+        Size.Width = 517.000000000000000000
+        Size.Height = 27.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 8
+        object lblID: TLabel
+          Align = Left
+          StyledSettings = [Family, Size, FontColor]
+          Margins.Right = 5.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Trailing
+          Text = 'ID:'
+        end
+        object edtID: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 1
+          Size.Width = 385.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = '{B19C0505-6D70-470E-A575-9BBA549AE8A8}'
+          object btnIDGenerate: TEditButton
+            CanFocus = False
+            Cursor = crArrow
+            Margins.Right = 5.000000000000000000
+            Size.Width = 100.000000000000000000
+            Size.Height = 19.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = 'Generate'
+            OnClick = btnIDGenerateClick
+          end
+        end
+      end
+      object lytPicture: TLayout
+        Align = Top
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 5.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Position.Y = 81.000000000000000000
+        Size.Width = 517.000000000000000000
+        Size.Height = 27.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object lblPicture: TLabel
+          Align = Left
+          Margins.Right = 5.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Picture:'
+        end
+        object edtPicture: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 1
+          Size.Width = 385.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = '*.png or *.jpg'
+          object btnPictureBrowse: TEditButton
+            CanFocus = False
+            Cursor = crArrow
+            Margins.Right = 5.000000000000000000
+            Size.Width = 100.000000000000000000
+            Size.Height = 19.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = 'Browse'
+            OnClick = btnPictureBrowseClick
+          end
+        end
+      end
+      object lytName: TLayout
+        Align = Top
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 5.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Position.Y = 54.000000000000000000
+        Size.Width = 517.000000000000000000
+        Size.Height = 27.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 7
+        object lblName: TLabel
+          Align = Left
+          Margins.Right = 5.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Name:'
+        end
+        object edtName: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 1
+          Size.Width = 385.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'TelegramBotAPI'
+        end
+      end
+      object lytLicenseType: TLayout
+        Align = Top
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 5.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Position.Y = 108.000000000000000000
+        Size.Width = 517.000000000000000000
+        Size.Height = 27.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 5
+        object lblLicenseType: TLabel
+          Align = Left
+          StyledSettings = [Family, Size, FontColor]
+          Margins.Right = 5.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Trailing
+          Text = 'License Type:'
+        end
+        object edtLicenseType: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 1
+          Size.Width = 385.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'MPL-2.0'
+        end
+      end
+      object lytLicenseFile: TLayout
+        Align = Top
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 5.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Position.Y = 135.000000000000000000
+        Size.Width = 517.000000000000000000
+        Size.Height = 27.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+        object lblLicenseFile: TLabel
+          Align = Left
+          StyledSettings = [Family, Size, FontColor]
+          Margins.Right = 5.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Trailing
+          Text = 'License File:'
+        end
+        object edtLicenseFile: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 0
+          Size.Width = 385.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = 'Source/License.txt'
+          object btnLicenseFileBrowse: TEditButton
+            CanFocus = False
+            Cursor = crArrow
+            Margins.Right = 5.000000000000000000
+            Size.Width = 100.000000000000000000
+            Size.Height = 19.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = 'Browse'
+          end
+        end
+      end
+      object lytPlatforms: TLayout
+        Align = Top
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 5.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Position.Y = 162.000000000000000000
+        Size.Width = 517.000000000000000000
+        Size.Height = 27.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+        object lblPlatforms: TLabel
+          Align = Left
+          StyledSettings = [Family, Size, FontColor]
+          Margins.Right = 5.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Trailing
+          Text = 'Platforms:'
+        end
+        object chkPlatformsWin32: TCheckBox
+          Align = Left
+          Position.X = 127.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          Text = 'Win32'
+        end
+        object chkPlatformsOSX32: TCheckBox
+          Align = Left
+          Position.X = 367.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          Text = 'OSX32'
+        end
+        object chkPlatformsWin64: TCheckBox
+          Align = Left
+          Position.X = 247.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          Text = 'Win64'
+        end
+      end
+      object lytPackageCompiler: TLayout
+        Align = Top
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 5.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Position.Y = 189.000000000000000000
+        Size.Width = 517.000000000000000000
+        Size.Height = 27.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        object lblPackageCompiler: TLabel
+          Align = Left
+          StyledSettings = [Family, Size, FontColor]
+          Margins.Right = 5.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Package Compiler:'
+        end
+        object lblPackageCompilerMin: TLabel
+          Align = Left
+          Position.X = 127.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 58.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Min:'
+        end
+        object spnbxPackageCompilerMin: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Left
+          TabOrder = 2
+          Cursor = crIBeam
+          Position.X = 185.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object spnbxPackageCompilerMax: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Left
+          TabOrder = 1
+          Cursor = crIBeam
+          Position.X = 343.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object lblPackageCompilerMax: TLabel
+          Align = Left
+          Position.X = 285.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 58.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Max:'
+        end
+      end
+      object lytCompiler: TLayout
+        Align = Top
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 5.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Position.Y = 216.000000000000000000
+        Size.Width = 517.000000000000000000
+        Size.Height = 27.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object lblCompiler: TLabel
+          Align = Left
+          StyledSettings = [Family, Size, FontColor]
+          Margins.Right = 5.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Compiler:'
+        end
+        object lblCompilerMin: TLabel
+          Align = Left
+          Position.X = 127.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 58.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Min:'
+        end
+        object spnbxCompilerMin: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Left
+          TabOrder = 2
+          Cursor = crIBeam
+          Position.X = 185.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object spnbxCompilerMax: TSpinBox
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Left
+          TabOrder = 1
+          Cursor = crIBeam
+          Position.X = 343.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 100.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object lblCompilerMax: TLabel
+          Align = Left
+          Position.X = 285.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 58.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'Max:'
+        end
+      end
+      object lyt1: TLayout
+        Align = Top
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 5.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Position.Y = 243.000000000000000000
+        Size.Width = 517.000000000000000000
+        Size.Height = 27.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 6
+        object lblFirstVersion: TLabel
+          Align = Left
+          Margins.Right = 5.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'First Version:'
+        end
+        object edtFirstVersion: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 1
+          Size.Width = 385.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextPrompt = '0.1.2-Alpha'
+        end
+      end
+    end
+    object tbtm2: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 52.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Install'
+    end
+  end
+end
