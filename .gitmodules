@@ -1,0 +1,3 @@
+[submodule "modules/Delphinus"]
+	path = modules/Delphinus
+	url = https://github.com/Memnarch/Delphinus.git
