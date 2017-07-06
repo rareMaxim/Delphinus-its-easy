@@ -1,9 +1,9 @@
-object Form1: TForm1
+object Main: TMain
   Left = 0
   Top = 0
-  Caption = 'Form1'
-  ClientHeight = 486
-  ClientWidth = 517
+  Caption = 'Delphinus UI Helper'
+  ClientHeight = 579
+  ClientWidth = 471
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -12,17 +12,17 @@ object Form1: TForm1
   DesignerMasterStyle = 0
   object tbc1: TTabControl
     Align = Client
-    Size.Width = 517.000000000000000000
-    Size.Height = 486.000000000000000000
+    Size.Width = 471.000000000000000000
+    Size.Height = 579.000000000000000000
     Size.PlatformDefault = False
     TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
-      517s
-      460s
-      517s
-      460s)
+      471s
+      553s
+      471s
+      553s)
     object tbtm1: TTabItem
       CustomIcon = <
         item
@@ -34,16 +34,18 @@ object Form1: TForm1
       StyleLookup = ''
       TabOrder = 0
       Text = 'Info'
+      ExplicitSize.cx = 41.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
       object lytFileName: TLayout
         Align = Top
         Padding.Left = 2.000000000000000000
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Size.Width = 517.000000000000000000
+        Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 9
+        TabOrder = 10
         object lblFileName: TLabel
           Align = Left
           Margins.Right = 5.000000000000000000
@@ -59,7 +61,7 @@ object Form1: TForm1
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 385.000000000000000000
+          Size.Width = 339.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = 'Delphinus.Info.json'
@@ -94,10 +96,10 @@ object Form1: TForm1
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 27.000000000000000000
-        Size.Width = 517.000000000000000000
+        Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 8
+        TabOrder = 9
         object lblID: TLabel
           Align = Left
           StyledSettings = [Family, Size, FontColor]
@@ -115,7 +117,7 @@ object Form1: TForm1
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 385.000000000000000000
+          Size.Width = 339.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = '{B19C0505-6D70-470E-A575-9BBA549AE8A8}'
@@ -139,7 +141,7 @@ object Form1: TForm1
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 81.000000000000000000
-        Size.Width = 517.000000000000000000
+        Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
@@ -158,7 +160,7 @@ object Form1: TForm1
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 385.000000000000000000
+          Size.Width = 339.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = '*.png or *.jpg'
@@ -182,10 +184,10 @@ object Form1: TForm1
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 54.000000000000000000
-        Size.Width = 517.000000000000000000
+        Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 7
+        TabOrder = 8
         object lblName: TLabel
           Align = Left
           Margins.Right = 5.000000000000000000
@@ -201,10 +203,10 @@ object Form1: TForm1
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 385.000000000000000000
+          Size.Width = 339.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
-          TextPrompt = 'TelegramBotAPI'
+          TextPrompt = 'Simple name you package'
         end
       end
       object lytLicenseType: TLayout
@@ -214,10 +216,10 @@ object Form1: TForm1
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 108.000000000000000000
-        Size.Width = 517.000000000000000000
+        Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 5
+        TabOrder = 6
         object lblLicenseType: TLabel
           Align = Left
           StyledSettings = [Family, Size, FontColor]
@@ -235,7 +237,7 @@ object Form1: TForm1
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 385.000000000000000000
+          Size.Width = 339.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = 'MPL-2.0'
@@ -248,7 +250,7 @@ object Form1: TForm1
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 135.000000000000000000
-        Size.Width = 517.000000000000000000
+        Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 4
@@ -269,7 +271,7 @@ object Form1: TForm1
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 0
-          Size.Width = 385.000000000000000000
+          Size.Width = 339.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = 'Source/License.txt'
@@ -292,52 +294,101 @@ object Form1: TForm1
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 162.000000000000000000
-        Size.Width = 517.000000000000000000
-        Size.Height = 27.000000000000000000
+        Size.Width = 471.000000000000000000
+        Size.Height = 71.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 3
-        object lblPlatforms: TLabel
-          Align = Left
-          StyledSettings = [Family, Size, FontColor]
-          Margins.Right = 5.000000000000000000
+        object lyt2: TLayout
+          Align = Top
           Position.X = 2.000000000000000000
           Position.Y = 2.000000000000000000
-          Size.Width = 120.000000000000000000
-          Size.Height = 23.000000000000000000
+          Size.Width = 464.000000000000000000
+          Size.Height = 27.000000000000000000
           Size.PlatformDefault = False
-          TextSettings.Font.StyleExt = {00070000000000000004000000}
-          TextSettings.HorzAlign = Trailing
-          Text = 'Platforms:'
+          TabOrder = 11
+          object chkPlatformsWin32: TCheckBox
+            Align = Left
+            Position.X = 125.000000000000000000
+            Size.Width = 70.000000000000000000
+            Size.Height = 27.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = 'Win32'
+          end
+          object chkPlatformsWin64: TCheckBox
+            Align = Left
+            Position.X = 195.000000000000000000
+            Size.Width = 70.000000000000000000
+            Size.Height = 27.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 3
+            Text = 'Win64'
+          end
+          object chkPlatformsOSX32: TCheckBox
+            Align = Left
+            Position.X = 265.000000000000000000
+            Size.Width = 70.000000000000000000
+            Size.Height = 27.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            Text = 'OSX32'
+          end
+          object chkPlatformsLinux64: TCheckBox
+            Align = Left
+            Position.X = 335.000000000000000000
+            Size.Width = 70.000000000000000000
+            Size.Height = 27.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            Text = 'Linux64'
+          end
+          object lblPlatforms: TLabel
+            Align = Left
+            StyledSettings = [Family, Size, FontColor]
+            Margins.Right = 5.000000000000000000
+            Size.Width = 120.000000000000000000
+            Size.Height = 27.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.HorzAlign = Trailing
+            Text = 'Platforms:'
+          end
         end
-        object chkPlatformsWin32: TCheckBox
-          Align = Left
+        object Layout1: TLayout
+          Align = Top
+          Margins.Left = 125.000000000000000000
           Position.X = 127.000000000000000000
-          Position.Y = 2.000000000000000000
-          Size.Width = 120.000000000000000000
-          Size.Height = 23.000000000000000000
+          Position.Y = 29.000000000000000000
+          Size.Width = 339.000000000000000000
+          Size.Height = 27.000000000000000000
           Size.PlatformDefault = False
-          TabOrder = 0
-          Text = 'Win32'
-        end
-        object chkPlatformsOSX32: TCheckBox
-          Align = Left
-          Position.X = 367.000000000000000000
-          Position.Y = 2.000000000000000000
-          Size.Width = 120.000000000000000000
-          Size.Height = 23.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 1
-          Text = 'OSX32'
-        end
-        object chkPlatformsWin64: TCheckBox
-          Align = Left
-          Position.X = 247.000000000000000000
-          Position.Y = 2.000000000000000000
-          Size.Width = 120.000000000000000000
-          Size.Height = 23.000000000000000000
-          Size.PlatformDefault = False
-          TabOrder = 2
-          Text = 'Win64'
+          TabOrder = 10
+          object chkPlatformsAndroid: TCheckBox
+            Align = Left
+            Size.Width = 70.000000000000000000
+            Size.Height = 27.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = 'Android'
+          end
+          object chkPlatformsIOS32: TCheckBox
+            Align = Left
+            Position.X = 70.000000000000000000
+            Size.Width = 70.000000000000000000
+            Size.Height = 27.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            Text = 'IOS32'
+          end
+          object chkPlatformsIOS64: TCheckBox
+            Align = Left
+            Position.X = 140.000000000000000000
+            Size.Width = 70.000000000000000000
+            Size.Height = 27.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            Text = 'IOS64'
+          end
         end
       end
       object lytPackageCompiler: TLayout
@@ -346,8 +397,8 @@ object Form1: TForm1
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 189.000000000000000000
-        Size.Width = 517.000000000000000000
+        Position.Y = 233.000000000000000000
+        Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
@@ -412,8 +463,8 @@ object Form1: TForm1
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 216.000000000000000000
-        Size.Width = 517.000000000000000000
+        Position.Y = 260.000000000000000000
+        Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
@@ -478,11 +529,11 @@ object Form1: TForm1
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 243.000000000000000000
-        Size.Width = 517.000000000000000000
+        Position.Y = 287.000000000000000000
+        Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
-        TabOrder = 6
+        TabOrder = 7
         object lblFirstVersion: TLabel
           Align = Left
           Margins.Right = 5.000000000000000000
@@ -498,10 +549,68 @@ object Form1: TForm1
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 385.000000000000000000
+          Size.Width = 339.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = '0.1.2-Alpha'
+        end
+      end
+      object lyt3: TLayout
+        Align = Top
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 2.000000000000000000
+        Padding.Right = 5.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Position.Y = 314.000000000000000000
+        Size.Width = 471.000000000000000000
+        Size.Height = 27.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 5
+        object lblReportUrl: TLabel
+          Align = Left
+          StyledSettings = [Family, Size, FontColor]
+          Margins.Right = 5.000000000000000000
+          Position.X = 2.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 120.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Trailing
+          Text = 'License Type:'
+        end
+        object edtReportUrl: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Client
+          TabOrder = 1
+          Size.Width = 339.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+      object grpDependencies: TGroupBox
+        Align = Client
+        Enabled = False
+        Padding.Left = 2.000000000000000000
+        Padding.Top = 17.000000000000000000
+        Padding.Right = 2.000000000000000000
+        Padding.Bottom = 2.000000000000000000
+        Size.Width = 471.000000000000000000
+        Size.Height = 212.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Dependencies [soon]'
+        TabOrder = 11
+        object lstDependencies: TListBox
+          Align = Client
+          Size.Width = 467.000000000000000000
+          Size.Height = 193.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          DisableFocusEffect = True
+          DefaultItemStyles.ItemStyle = ''
+          DefaultItemStyles.GroupHeaderStyle = ''
+          DefaultItemStyles.GroupFooterStyle = ''
+          Viewport.Width = 463.000000000000000000
+          Viewport.Height = 189.000000000000000000
         end
       end
     end
@@ -516,6 +625,8 @@ object Form1: TForm1
       StyleLookup = ''
       TabOrder = 0
       Text = 'Install'
+      ExplicitSize.cx = 52.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
     end
   end
 end

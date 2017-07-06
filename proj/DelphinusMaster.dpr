@@ -3,12 +3,12 @@ program DelphinusMaster;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  Master in '..\view\Master.pas' {Form1};
+  Master in '..\view\Master.pas' {Main};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TMain, Main);
   Application.Run;
 end.

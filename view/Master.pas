@@ -20,10 +20,11 @@ uses
   FMX.TabControl,
   DN.JSonFile.Info,
   FMX.EditBox,
-  FMX.SpinBox;
+  FMX.SpinBox,
+  FMX.ListBox;
 
 type
-  TForm1 = class(TForm)
+  TMain = class(TForm)
     tbc1: TTabControl;
     tbtm1: TTabItem;
     lytFileName: TLayout;
@@ -50,10 +51,6 @@ type
     edtLicenseFile: TEdit;
     btnLicenseFileBrowse: TEditButton;
     lytPlatforms: TLayout;
-    lblPlatforms: TLabel;
-    chkPlatformsWin32: TCheckBox;
-    chkPlatformsOSX32: TCheckBox;
-    chkPlatformsWin64: TCheckBox;
     tbtm2: TTabItem;
     lytPackageCompiler: TLayout;
     lblPackageCompiler: TLabel;
@@ -70,6 +67,21 @@ type
     lyt1: TLayout;
     lblFirstVersion: TLabel;
     edtFirstVersion: TEdit;
+    lyt2: TLayout;
+    chkPlatformsWin32: TCheckBox;
+    chkPlatformsWin64: TCheckBox;
+    chkPlatformsOSX32: TCheckBox;
+    chkPlatformsLinux64: TCheckBox;
+    lblPlatforms: TLabel;
+    Layout1: TLayout;
+    chkPlatformsAndroid: TCheckBox;
+    chkPlatformsIOS32: TCheckBox;
+    chkPlatformsIOS64: TCheckBox;
+    lyt3: TLayout;
+    lblReportUrl: TLabel;
+    edtReportUrl: TEdit;
+    grpDependencies: TGroupBox;
+    lstDependencies: TListBox;
     procedure btnFileNameOpenClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -86,7 +98,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  Main: TMain;
 
 implementation
 
@@ -95,7 +107,7 @@ uses
 
 {$R *.fmx}
 
-procedure TForm1.btnFileNameOpenClick(Sender: TObject);
+procedure TMain.btnFileNameOpenClick(Sender: TObject);
 var
   OD: TOpenDialog;
 begin
@@ -112,7 +124,7 @@ begin
   end;
 end;
 
-procedure TForm1.btnPictureBrowseClick(Sender: TObject);
+procedure TMain.btnPictureBrowseClick(Sender: TObject);
 var
   OD: TOpenDialog;
 begin
@@ -127,7 +139,7 @@ begin
   end;
 end;
 
-procedure TForm1.btnFileNameSaveClick(Sender: TObject);
+procedure TMain.btnFileNameSaveClick(Sender: TObject);
 var
   OD: TSaveDialog;
 begin
@@ -143,12 +155,14 @@ begin
   end;
 end;
 
-procedure TForm1.btnIDGenerateClick(Sender: TObject);
+procedure TMain.btnIDGenerateClick(Sender: TObject);
 begin
   edtID.Text := TGUID.NewGuid.ToString;
 end;
 
-procedure TForm1.DoReadModel;
+procedure TMain.DoReadModel;
+var
+  LDepedenci: TInfoDependency;
 begin
   edtID.Text := FInfo.ID.ToString;
   edtName.Text := FInfo.Name;
@@ -158,40 +172,61 @@ begin
   chkPlatformsWin32.IsChecked := TDNCompilerPlatform.cpWin32 in FInfo.Platforms;
   chkPlatformsWin64.IsChecked := TDNCompilerPlatform.cpWin64 in FInfo.Platforms;
   chkPlatformsOSX32.IsChecked := TDNCompilerPlatform.cpOSX32 in FInfo.Platforms;
+  chkPlatformsLinux64.IsChecked := TDNCompilerPlatform.cpLinux64 in FInfo.Platforms;
+  chkPlatformsAndroid.IsChecked := TDNCompilerPlatform.cpAndroid in FInfo.Platforms;
+  chkPlatformsIOS32.IsChecked := TDNCompilerPlatform.cpIOSDevice32 in FInfo.Platforms;
+  chkPlatformsIOS64.IsChecked := TDNCompilerPlatform.cpIOSDevice64 in FInfo.Platforms;
   spnbxPackageCompilerMin.Value := FInfo.PackageCompilerMin;
   spnbxPackageCompilerMax.Value := FInfo.PackageCompilerMax;
   spnbxCompilerMin.Value := FInfo.CompilerMin;
   spnbxCompilerMax.Value := FInfo.CompilerMax;
   edtFirstVersion.Text := FInfo.FirstVersion;
+  edtReportUrl.Text := FInfo.ReportUrl;
+  for LDepedenci in FInfo.Dependencies do
+  begin
+    lstDependencies.Items.Add(LDepedenci.ID.ToString + ' - ' + LDepedenci.Version.ToString);
+  end;
+
   {TODO -oM.E.Sysoev -cGeneral : Add Dependencies}
 end;
 
-procedure TForm1.DoWriteModel;
+procedure TMain.DoWriteModel;
 begin
   FInfo.ID := TGUID.Create(edtID.Text);
   FInfo.Name := edtName.Text;
- // FInfo.Picture := edtPicture.Text;
+  FInfo.Picture := edtPicture.Text;
   FInfo.LicenseType := edtLicenseType.Text;
   FInfo.LicenseFile := edtLicenseFile.Text;
-//  if chkPlatformsWin32.IsChecked then
-//    FInfo.Platforms := FInfo.Platforms + TDNCompilerPlatform.cpWin32;
-//  if chkPlatformsWin64.IsChecked then
-//    FInfo.Platforms := FInfo.Platforms + TDNCompilerPlatform.cpWin64;
-//  if chkPlatformsOSX32.IsChecked then
-//    FInfo.Platforms := FInfo.Platforms + TDNCompilerPlatform.cpOSX32;
- // FInfo.PackageCompilerMin := spnbxPackageCompilerMin.Value;
- // FInfo.PackageCompilerMax := spnbxPackageCompilerMax.Value;
-//  FInfo.CompilerMin := spnbxCompilerMin.Value;
-//  FInfo.CompilerMax := spnbxCompilerMax.Value;
- // FInfo.FirstVersion := edtFirstVersion.Text;
+
+  if chkPlatformsWin32.IsChecked then
+    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpWin32];
+  if chkPlatformsWin64.IsChecked then
+    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpWin64];
+  if chkPlatformsOSX32.IsChecked then
+    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpOSX32];
+  if chkPlatformsLinux64.IsChecked then
+    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpLinux64];
+  if chkPlatformsAndroid.IsChecked then
+    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpAndroid];
+  if chkPlatformsIOS32.IsChecked then
+    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpIOSDevice32];
+  if chkPlatformsIOS64.IsChecked then
+    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpIOSDevice64];
+
+  FInfo.PackageCompilerMin := spnbxPackageCompilerMin.Value;
+  FInfo.PackageCompilerMax := spnbxPackageCompilerMax.Value;
+  FInfo.CompilerMin := spnbxCompilerMin.Value;
+  FInfo.CompilerMax := spnbxCompilerMax.Value;
+  FInfo.FirstVersion := edtFirstVersion.Text;
+  FInfo.ReportUrl := edtReportUrl.Text;
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TMain.FormCreate(Sender: TObject);
 begin
   FInfo := TInfoFile.Create;
 end;
 
-procedure TForm1.FormDestroy(Sender: TObject);
+procedure TMain.FormDestroy(Sender: TObject);
 begin
   FInfo.Free;
 end;
