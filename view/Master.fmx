@@ -13,16 +13,16 @@ object Main: TMain
   object tbc1: TTabControl
     Align = Client
     Size.Width = 471.000000000000000000
-    Size.Height = 579.000000000000000000
+    Size.Height = 552.000000000000000000
     Size.PlatformDefault = False
     TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
       471s
-      553s
+      526s
       471s
-      553s)
+      526s)
     object tbtm1: TTabItem
       CustomIcon = <
         item
@@ -36,66 +36,12 @@ object Main: TMain
       Text = 'Info'
       ExplicitSize.cx = 41.000000000000000000
       ExplicitSize.cy = 26.000000000000000000
-      object lytFileName: TLayout
-        Align = Top
-        Padding.Left = 2.000000000000000000
-        Padding.Top = 2.000000000000000000
-        Padding.Right = 5.000000000000000000
-        Padding.Bottom = 2.000000000000000000
-        Size.Width = 471.000000000000000000
-        Size.Height = 27.000000000000000000
-        Size.PlatformDefault = False
-        TabOrder = 10
-        object lblFileName: TLabel
-          Align = Left
-          Margins.Right = 5.000000000000000000
-          Position.X = 2.000000000000000000
-          Position.Y = 2.000000000000000000
-          Size.Width = 120.000000000000000000
-          Size.Height = 23.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.HorzAlign = Trailing
-          Text = 'File:'
-        end
-        object edtFileName: TEdit
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Client
-          TabOrder = 1
-          Size.Width = 339.000000000000000000
-          Size.Height = 23.000000000000000000
-          Size.PlatformDefault = False
-          TextPrompt = 'Delphinus.Info.json'
-          object btnFileNameOpen: TEditButton
-            CanFocus = False
-            Cursor = crArrow
-            Size.Width = 50.000000000000000000
-            Size.Height = 19.000000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 0
-            Text = 'Open'
-            OnClick = btnFileNameOpenClick
-          end
-          object btnFileNameSave: TEditButton
-            CanFocus = False
-            Cursor = crArrow
-            Margins.Right = 5.000000000000000000
-            Position.X = 50.000000000000000000
-            Size.Width = 50.000000000000000000
-            Size.Height = 19.000000000000000000
-            Size.PlatformDefault = False
-            TabOrder = 1
-            Text = 'Save'
-            OnClick = btnFileNameSaveClick
-          end
-        end
-      end
       object lytID: TLayout
         Align = Top
         Padding.Left = 2.000000000000000000
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 27.000000000000000000
         Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
@@ -140,7 +86,7 @@ object Main: TMain
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 81.000000000000000000
+        Position.Y = 54.000000000000000000
         Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
@@ -183,7 +129,7 @@ object Main: TMain
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 54.000000000000000000
+        Position.Y = 27.000000000000000000
         Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
@@ -215,7 +161,7 @@ object Main: TMain
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 108.000000000000000000
+        Position.Y = 81.000000000000000000
         Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
@@ -249,7 +195,7 @@ object Main: TMain
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 135.000000000000000000
+        Position.Y = 108.000000000000000000
         Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
@@ -293,7 +239,7 @@ object Main: TMain
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 162.000000000000000000
+        Position.Y = 135.000000000000000000
         Size.Width = 471.000000000000000000
         Size.Height = 71.000000000000000000
         Size.PlatformDefault = False
@@ -397,7 +343,7 @@ object Main: TMain
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 233.000000000000000000
+        Position.Y = 206.000000000000000000
         Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
@@ -463,7 +409,7 @@ object Main: TMain
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 260.000000000000000000
+        Position.Y = 233.000000000000000000
         Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
@@ -529,7 +475,7 @@ object Main: TMain
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 287.000000000000000000
+        Position.Y = 260.000000000000000000
         Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
@@ -561,7 +507,7 @@ object Main: TMain
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Position.Y = 314.000000000000000000
+        Position.Y = 287.000000000000000000
         Size.Width = 471.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
@@ -597,7 +543,7 @@ object Main: TMain
         Size.Height = 212.000000000000000000
         Size.PlatformDefault = False
         Text = 'Dependencies [soon]'
-        TabOrder = 11
+        TabOrder = 10
         object lstDependencies: TListBox
           Align = Client
           PopupMenu = pmDependencies
@@ -627,6 +573,58 @@ object Main: TMain
       Text = 'Install'
       ExplicitSize.cx = 52.000000000000000000
       ExplicitSize.cy = 26.000000000000000000
+    end
+  end
+  object lytProjectDir: TLayout
+    Align = Top
+    Padding.Left = 2.000000000000000000
+    Padding.Top = 2.000000000000000000
+    Padding.Right = 5.000000000000000000
+    Padding.Bottom = 2.000000000000000000
+    Size.Width = 471.000000000000000000
+    Size.Height = 27.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object lblProjectDir: TLabel
+      Align = Left
+      Margins.Right = 5.000000000000000000
+      Position.X = 2.000000000000000000
+      Position.Y = 2.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Trailing
+      Text = 'Project dir:'
+    end
+    object edtProjectDir: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Client
+      TabOrder = 1
+      Size.Width = 339.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = 'D://MyProjects/TheBestProject'
+      object edtProjectDirBrowse: TEditButton
+        CanFocus = False
+        Cursor = crArrow
+        Size.Width = 50.000000000000000000
+        Size.Height = 19.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Browse'
+        OnClick = btnFileNameSaveClick
+      end
+      object btnProjectDirSave: TEditButton
+        CanFocus = False
+        Cursor = crArrow
+        Position.X = 50.000000000000000000
+        Size.Width = 50.000000000000000000
+        Size.Height = 19.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Text = 'Save'
+        OnClick = btnProjectDirSaveClick
+      end
     end
   end
   object pmDependencies: TPopupMenu

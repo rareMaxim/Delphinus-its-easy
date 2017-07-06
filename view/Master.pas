@@ -19,6 +19,7 @@ uses
   FMX.Layouts,
   FMX.TabControl,
   DN.JSonFile.Info,
+  DN.JSonFile.Installation,
   FMX.EditBox,
   FMX.SpinBox,
   FMX.ListBox,
@@ -28,11 +29,6 @@ type
   TMain = class(TForm)
     tbc1: TTabControl;
     tbtm1: TTabItem;
-    lytFileName: TLayout;
-    lblFileName: TLabel;
-    edtFileName: TEdit;
-    btnFileNameOpen: TEditButton;
-    btnFileNameSave: TEditButton;
     lytID: TLayout;
     lblID: TLabel;
     edtID: TEdit;
@@ -87,7 +83,11 @@ type
     DependMenuAdd: TMenuItem;
     DependMenuEdit: TMenuItem;
     DependMenuDelete: TMenuItem;
-    procedure btnFileNameOpenClick(Sender: TObject);
+    lytProjectDir: TLayout;
+    lblProjectDir: TLabel;
+    edtProjectDir: TEdit;
+    edtProjectDirBrowse: TEditButton;
+    btnProjectDirSave: TEditButton;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnIDGenerateClick(Sender: TObject);
@@ -96,12 +96,17 @@ type
     procedure DependMenuAddClick(Sender: TObject);
     procedure DependMenuEditClick(Sender: TObject);
     procedure DependMenuDeleteClick(Sender: TObject);
+    procedure btnProjectDirSaveClick(Sender: TObject);
   private
     { Private declarations }
     FInfo: TInfoFile;
-    procedure DoReadModel;
-    procedure DoReadDependencies;
-    procedure DoWriteModel;
+    FInstall: TInstallationFile;
+    procedure DoReadModelInfo;
+    procedure DoReadModelInfoDependencies;
+    procedure DoWriteIfnoModel;
+    /////
+    procedure DoReadModelInstall; virtual; abstract;
+    procedure DoWriteModelInstall;virtual; abstract;
   public
     { Public declarations }
   end;
@@ -112,28 +117,12 @@ var
 implementation
 
 uses
+  System.IOUtils,
   FMX.DialogService,
   DN.Types,
   DN.Version;
 
 {$R *.fmx}
-
-procedure TMain.btnFileNameOpenClick(Sender: TObject);
-var
-  OD: TOpenDialog;
-begin
-  OD := TOpenDialog.Create(Self);
-  try
-    OD.Filter := 'Delphinus.Info.json|Delphinus.Info.json';
-    if not OD.Execute then
-      Exit;
-    edtFileName.Text := OD.FileName;
-    FInfo.LoadFromFile(edtFileName.Text);
-    DoReadModel;
-  finally
-    OD.Free;
-  end;
-end;
 
 procedure TMain.btnPictureBrowseClick(Sender: TObject);
 var
@@ -150,19 +139,21 @@ begin
   end;
 end;
 
+procedure TMain.btnProjectDirSaveClick(Sender: TObject);
+begin
+  DoWriteIfnoModel;
+end;
+
 procedure TMain.btnFileNameSaveClick(Sender: TObject);
 var
-  OD: TSaveDialog;
+  LDir: string;
 begin
-  OD := TSaveDialog.Create(Self);
-  try
-    OD.FileName := 'Delphinus.Info.json';
-    if not OD.Execute then
-      Exit;
-    DoWriteModel;
-    FInfo.SaveToFile(OD.FileName);
-  finally
-    OD.Free;
+  if SelectDirectory('Project dir', '', LDir) then
+  begin
+    edtProjectDir.Text := LDir;
+    if TFile.Exists(TPath.Combine(LDir, 'Delphinus.Info.json')) then
+      FInfo.LoadFromFile(TPath.Combine(LDir, 'Delphinus.Info.json'));
+    DoReadModelInfo;
   end;
 end;
 
@@ -171,7 +162,7 @@ begin
   edtID.Text := TGUID.NewGuid.ToString;
 end;
 
-procedure TMain.DoReadDependencies;
+procedure TMain.DoReadModelInfoDependencies;
 var
   LDepedenci: TInfoDependency;
 begin
@@ -187,7 +178,7 @@ begin
   end;
 end;
 
-procedure TMain.DoReadModel;
+procedure TMain.DoReadModelInfo;
 begin
   edtID.Text := FInfo.ID.ToString;
   edtName.Text := FInfo.Name;
@@ -207,10 +198,10 @@ begin
   spnbxCompilerMax.Value := FInfo.CompilerMax;
   edtFirstVersion.Text := FInfo.FirstVersion;
   edtReportUrl.Text := FInfo.ReportUrl;
-  DoReadDependencies;
+  DoReadModelInfoDependencies;
 end;
 
-procedure TMain.DoWriteModel;
+procedure TMain.DoWriteIfnoModel;
 begin
   FInfo.ID := TGUID.Create(edtID.Text);
   FInfo.Name := edtName.Text;
@@ -239,6 +230,7 @@ begin
   FInfo.CompilerMax := spnbxCompilerMax.Value;
   FInfo.FirstVersion := edtFirstVersion.Text;
   FInfo.ReportUrl := edtReportUrl.Text;
+  FInfo.SaveToFile(TPath.Combine(edtProjectDir.Text, 'Delphinus.Info.json'));
 end;
 
 procedure TMain.FormCreate(Sender: TObject);
@@ -264,7 +256,7 @@ begin
       if TDNVersion.TryParse(AValues[1], Dep.Version) then
       begin
         FInfo.Dependencies.Add(Dep);
-        DoReadDependencies;
+        DoReadModelInfoDependencies;
       end;
     end);
 end;
@@ -274,7 +266,7 @@ begin
   if lstDependencies.ItemIndex = -1 then
     Exit;
   FInfo.Dependencies.Delete(lstDependencies.ItemIndex);
-  DoReadDependencies;
+  DoReadModelInfoDependencies;
 end;
 
 procedure TMain.DependMenuEditClick(Sender: TObject);
@@ -295,7 +287,7 @@ begin
       if TDNVersion.TryParse(AValues[1], Dep.Version) then
       begin
         FInfo.Dependencies[lstDependencies.ItemIndex] := Dep;
-        DoReadDependencies;
+        DoReadModelInfoDependencies;
       end;
     end);
 end;
