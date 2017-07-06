@@ -52,14 +52,10 @@ type
     lytPackageCompiler: TLayout;
     lblPackageCompiler: TLabel;
     lblPackageCompilerMin: TLabel;
-    spnbxPackageCompilerMin: TSpinBox;
-    spnbxPackageCompilerMax: TSpinBox;
     lblPackageCompilerMax: TLabel;
     lytCompiler: TLayout;
     lblCompiler: TLabel;
     lblCompilerMin: TLabel;
-    spnbxCompilerMin: TSpinBox;
-    spnbxCompilerMax: TSpinBox;
     lblCompilerMax: TLabel;
     lyt1: TLayout;
     lblFirstVersion: TLabel;
@@ -88,6 +84,10 @@ type
     edtProjectDir: TEdit;
     edtProjectDirBrowse: TEditButton;
     btnProjectDirSave: TEditButton;
+    cbbCompilerMax: TComboBox;
+    cbbCompilerMin: TComboBox;
+    cbbPackageCompilerMax: TComboBox;
+    cbbPackageCompilerMin: TComboBox;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnIDGenerateClick(Sender: TObject);
@@ -106,7 +106,9 @@ type
     procedure DoWriteIfnoModel;
     /////
     procedure DoReadModelInstall; virtual; abstract;
-    procedure DoWriteModelInstall;virtual; abstract;
+    procedure DoWriteModelInstall; virtual; abstract;
+  protected
+   // function IndexOf<T>():Integer;
   public
     { Public declarations }
   end;
@@ -118,8 +120,10 @@ implementation
 
 uses
   System.IOUtils,
+  System.Generics.Collections,
   FMX.DialogService,
   DN.Types,
+  DN.Utils,
   DN.Version;
 
 {$R *.fmx}
@@ -151,8 +155,8 @@ begin
   if SelectDirectory('Project dir', '', LDir) then
   begin
     edtProjectDir.Text := LDir;
-    if TFile.Exists(TPath.Combine(LDir, 'Delphinus.Info.json')) then
-      FInfo.LoadFromFile(TPath.Combine(LDir, 'Delphinus.Info.json'));
+    if TFile.Exists(TPath.Combine(LDir, CInfoFile)) then
+      FInfo.LoadFromFile(TPath.Combine(LDir, CInfoFile));
     DoReadModelInfo;
   end;
 end;
@@ -192,10 +196,10 @@ begin
   chkPlatformsAndroid.IsChecked := TDNCompilerPlatform.cpAndroid in FInfo.Platforms;
   chkPlatformsIOS32.IsChecked := TDNCompilerPlatform.cpIOSDevice32 in FInfo.Platforms;
   chkPlatformsIOS64.IsChecked := TDNCompilerPlatform.cpIOSDevice64 in FInfo.Platforms;
-  spnbxPackageCompilerMin.Value := FInfo.PackageCompilerMin;
-  spnbxPackageCompilerMax.Value := FInfo.PackageCompilerMax;
-  spnbxCompilerMin.Value := FInfo.CompilerMin;
-  spnbxCompilerMax.Value := FInfo.CompilerMax;
+  cbbPackageCompilerMin.ItemIndex := FInfo.PackageCompilerMin.Frac;
+  cbbPackageCompilerMin.ItemIndex := FInfo.PackageCompilerMax.Frac;
+  cbbCompilerMin.ItemIndex := FInfo.CompilerMin.Frac;
+  cbbCompilerMax.ItemIndex := FInfo.CompilerMax.Frac;
   edtFirstVersion.Text := FInfo.FirstVersion;
   edtReportUrl.Text := FInfo.ReportUrl;
   DoReadModelInfoDependencies;
@@ -224,18 +228,28 @@ begin
   if chkPlatformsIOS64.IsChecked then
     FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpIOSDevice64];
 
-  FInfo.PackageCompilerMin := spnbxPackageCompilerMin.Value;
-  FInfo.PackageCompilerMax := spnbxPackageCompilerMax.Value;
-  FInfo.CompilerMin := spnbxCompilerMin.Value;
-  FInfo.CompilerMax := spnbxCompilerMax.Value;
+  FInfo.PackageCompilerMin := cbbPackageCompilerMin.ItemIndex + Low(DN.Utils.CDelphiNames);
+  FInfo.PackageCompilerMax := cbbPackageCompilerMax.ItemIndex + Low(DN.Utils.CDelphiNames);
+  FInfo.CompilerMin := cbbCompilerMin.ItemIndex + Low(DN.Utils.CDelphiNames);
+  FInfo.CompilerMax := cbbCompilerMax.ItemIndex + Low(DN.Utils.CDelphiNames);
+
   FInfo.FirstVersion := edtFirstVersion.Text;
   FInfo.ReportUrl := edtReportUrl.Text;
-  FInfo.SaveToFile(TPath.Combine(edtProjectDir.Text, 'Delphinus.Info.json'));
+  FInfo.SaveToFile(TPath.Combine(edtProjectDir.Text, CInfoFile));
 end;
 
 procedure TMain.FormCreate(Sender: TObject);
+var
+  I: Integer;
 begin
   FInfo := TInfoFile.Create;
+  for I := Low(DN.Utils.CDelphiNames) to High(DN.Utils.CDelphiNames) do
+  begin
+    cbbCompilerMin.Items.Add(DN.Utils.CDelphiNames[I]);
+    cbbCompilerMax.Items.Add(DN.Utils.CDelphiNames[I]);
+    cbbPackageCompilerMin.Items.Add(DN.Utils.CDelphiNames[I]);
+    cbbPackageCompilerMax.Items.Add(DN.Utils.CDelphiNames[I]);
+  end;
 end;
 
 procedure TMain.FormDestroy(Sender: TObject);

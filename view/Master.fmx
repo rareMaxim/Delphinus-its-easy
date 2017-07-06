@@ -3,7 +3,7 @@ object Main: TMain
   Top = 0
   Caption = 'Delphinus UI Helper'
   ClientHeight = 579
-  ClientWidth = 471
+  ClientWidth = 500
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -12,16 +12,16 @@ object Main: TMain
   DesignerMasterStyle = 0
   object tbc1: TTabControl
     Align = Client
-    Size.Width = 471.000000000000000000
+    Size.Width = 500.000000000000000000
     Size.Height = 552.000000000000000000
     Size.PlatformDefault = False
     TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
-      471s
+      500s
       526s
-      471s
+      500s
       526s)
     object tbtm1: TTabItem
       CustomIcon = <
@@ -42,7 +42,7 @@ object Main: TMain
         Padding.Top = 2.000000000000000000
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Size.Width = 471.000000000000000000
+        Size.Width = 500.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 9
@@ -63,7 +63,7 @@ object Main: TMain
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 339.000000000000000000
+          Size.Width = 368.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = '{B19C0505-6D70-470E-A575-9BBA549AE8A8}'
@@ -87,7 +87,7 @@ object Main: TMain
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 54.000000000000000000
-        Size.Width = 471.000000000000000000
+        Size.Width = 500.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
@@ -106,7 +106,7 @@ object Main: TMain
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 339.000000000000000000
+          Size.Width = 368.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = '*.png or *.jpg'
@@ -130,7 +130,7 @@ object Main: TMain
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 27.000000000000000000
-        Size.Width = 471.000000000000000000
+        Size.Width = 500.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 8
@@ -149,7 +149,7 @@ object Main: TMain
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 339.000000000000000000
+          Size.Width = 368.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = 'Simple name you package'
@@ -162,7 +162,7 @@ object Main: TMain
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 81.000000000000000000
-        Size.Width = 471.000000000000000000
+        Size.Width = 500.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 6
@@ -183,7 +183,7 @@ object Main: TMain
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 339.000000000000000000
+          Size.Width = 368.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = 'MPL-2.0'
@@ -196,7 +196,7 @@ object Main: TMain
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 108.000000000000000000
-        Size.Width = 471.000000000000000000
+        Size.Width = 500.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 4
@@ -217,7 +217,7 @@ object Main: TMain
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 0
-          Size.Width = 339.000000000000000000
+          Size.Width = 368.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = 'Source/License.txt'
@@ -240,7 +240,7 @@ object Main: TMain
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 135.000000000000000000
-        Size.Width = 471.000000000000000000
+        Size.Width = 500.000000000000000000
         Size.Height = 71.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 3
@@ -248,7 +248,7 @@ object Main: TMain
           Align = Top
           Position.X = 2.000000000000000000
           Position.Y = 2.000000000000000000
-          Size.Width = 464.000000000000000000
+          Size.Width = 493.000000000000000000
           Size.Height = 27.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 11
@@ -305,7 +305,7 @@ object Main: TMain
           Margins.Left = 125.000000000000000000
           Position.X = 127.000000000000000000
           Position.Y = 29.000000000000000000
-          Size.Width = 339.000000000000000000
+          Size.Width = 368.000000000000000000
           Size.Height = 27.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 10
@@ -344,7 +344,7 @@ object Main: TMain
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 206.000000000000000000
-        Size.Width = 471.000000000000000000
+        Size.Width = 500.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 2
@@ -370,37 +370,31 @@ object Main: TMain
           TextSettings.HorzAlign = Trailing
           Text = 'Min:'
         end
-        object spnbxPackageCompilerMin: TSpinBox
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Left
-          TabOrder = 2
-          Cursor = crIBeam
-          Position.X = 185.000000000000000000
-          Position.Y = 2.000000000000000000
-          Size.Width = 100.000000000000000000
-          Size.Height = 23.000000000000000000
-          Size.PlatformDefault = False
-        end
-        object spnbxPackageCompilerMax: TSpinBox
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Left
-          TabOrder = 1
-          Cursor = crIBeam
-          Position.X = 343.000000000000000000
-          Position.Y = 2.000000000000000000
-          Size.Width = 100.000000000000000000
-          Size.Height = 23.000000000000000000
-          Size.PlatformDefault = False
-        end
         object lblPackageCompilerMax: TLabel
           Align = Left
-          Position.X = 285.000000000000000000
+          Position.X = 321.000000000000000000
           Position.Y = 2.000000000000000000
           Size.Width = 58.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextSettings.HorzAlign = Trailing
           Text = 'Max:'
+        end
+        object cbbPackageCompilerMax: TComboBox
+          Align = Client
+          Size.Width = 116.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+        end
+        object cbbPackageCompilerMin: TComboBox
+          Align = Left
+          Position.X = 185.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 136.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
         end
       end
       object lytCompiler: TLayout
@@ -410,7 +404,7 @@ object Main: TMain
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 233.000000000000000000
-        Size.Width = 471.000000000000000000
+        Size.Width = 500.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
@@ -436,37 +430,31 @@ object Main: TMain
           TextSettings.HorzAlign = Trailing
           Text = 'Min:'
         end
-        object spnbxCompilerMin: TSpinBox
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Left
-          TabOrder = 2
-          Cursor = crIBeam
-          Position.X = 185.000000000000000000
-          Position.Y = 2.000000000000000000
-          Size.Width = 100.000000000000000000
-          Size.Height = 23.000000000000000000
-          Size.PlatformDefault = False
-        end
-        object spnbxCompilerMax: TSpinBox
-          Touch.InteractiveGestures = [LongTap, DoubleTap]
-          Align = Left
-          TabOrder = 1
-          Cursor = crIBeam
-          Position.X = 343.000000000000000000
-          Position.Y = 2.000000000000000000
-          Size.Width = 100.000000000000000000
-          Size.Height = 23.000000000000000000
-          Size.PlatformDefault = False
-        end
         object lblCompilerMax: TLabel
           Align = Left
-          Position.X = 285.000000000000000000
+          Position.X = 321.000000000000000000
           Position.Y = 2.000000000000000000
           Size.Width = 58.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextSettings.HorzAlign = Trailing
           Text = 'Max:'
+        end
+        object cbbCompilerMax: TComboBox
+          Align = Client
+          Size.Width = 116.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+        end
+        object cbbCompilerMin: TComboBox
+          Align = Left
+          Position.X = 185.000000000000000000
+          Position.Y = 2.000000000000000000
+          Size.Width = 136.000000000000000000
+          Size.Height = 23.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
         end
       end
       object lyt1: TLayout
@@ -476,7 +464,7 @@ object Main: TMain
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 260.000000000000000000
-        Size.Width = 471.000000000000000000
+        Size.Width = 500.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 7
@@ -495,7 +483,7 @@ object Main: TMain
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 339.000000000000000000
+          Size.Width = 368.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextPrompt = '0.1.2-Alpha'
@@ -508,7 +496,7 @@ object Main: TMain
         Padding.Right = 5.000000000000000000
         Padding.Bottom = 2.000000000000000000
         Position.Y = 287.000000000000000000
-        Size.Width = 471.000000000000000000
+        Size.Width = 500.000000000000000000
         Size.Height = 27.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 5
@@ -522,13 +510,13 @@ object Main: TMain
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
           TextSettings.HorzAlign = Trailing
-          Text = 'License Type:'
+          Text = 'Report Url: '
         end
         object edtReportUrl: TEdit
           Touch.InteractiveGestures = [LongTap, DoubleTap]
           Align = Client
           TabOrder = 1
-          Size.Width = 339.000000000000000000
+          Size.Width = 368.000000000000000000
           Size.Height = 23.000000000000000000
           Size.PlatformDefault = False
         end
@@ -539,15 +527,15 @@ object Main: TMain
         Padding.Top = 17.000000000000000000
         Padding.Right = 2.000000000000000000
         Padding.Bottom = 2.000000000000000000
-        Size.Width = 471.000000000000000000
+        Size.Width = 500.000000000000000000
         Size.Height = 212.000000000000000000
         Size.PlatformDefault = False
-        Text = 'Dependencies [soon]'
+        Text = 'Dependencies'
         TabOrder = 10
         object lstDependencies: TListBox
           Align = Client
           PopupMenu = pmDependencies
-          Size.Width = 467.000000000000000000
+          Size.Width = 496.000000000000000000
           Size.Height = 193.000000000000000000
           Size.PlatformDefault = False
           TabOrder = 0
@@ -555,7 +543,7 @@ object Main: TMain
           DefaultItemStyles.ItemStyle = ''
           DefaultItemStyles.GroupHeaderStyle = ''
           DefaultItemStyles.GroupFooterStyle = ''
-          Viewport.Width = 463.000000000000000000
+          Viewport.Width = 492.000000000000000000
           Viewport.Height = 189.000000000000000000
         end
       end
@@ -564,13 +552,14 @@ object Main: TMain
       CustomIcon = <
         item
         end>
+      Enabled = False
       IsSelected = False
-      Size.Width = 52.000000000000000000
+      Size.Width = 96.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
-      Text = 'Install'
+      Text = 'Install - [soon]'
       ExplicitSize.cx = 52.000000000000000000
       ExplicitSize.cy = 26.000000000000000000
     end
@@ -581,7 +570,7 @@ object Main: TMain
     Padding.Top = 2.000000000000000000
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
-    Size.Width = 471.000000000000000000
+    Size.Width = 500.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
@@ -600,7 +589,7 @@ object Main: TMain
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Client
       TabOrder = 1
-      Size.Width = 339.000000000000000000
+      Size.Width = 368.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = 'D://MyProjects/TheBestProject'
