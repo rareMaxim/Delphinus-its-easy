@@ -21,7 +21,8 @@ uses
   DN.JSonFile.Info,
   FMX.EditBox,
   FMX.SpinBox,
-  FMX.ListBox;
+  FMX.ListBox,
+  FMX.Menus;
 
 type
   TMain = class(TForm)
@@ -82,16 +83,24 @@ type
     edtReportUrl: TEdit;
     grpDependencies: TGroupBox;
     lstDependencies: TListBox;
+    pmDependencies: TPopupMenu;
+    DependMenuAdd: TMenuItem;
+    DependMenuEdit: TMenuItem;
+    DependMenuDelete: TMenuItem;
     procedure btnFileNameOpenClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnIDGenerateClick(Sender: TObject);
     procedure btnPictureBrowseClick(Sender: TObject);
     procedure btnFileNameSaveClick(Sender: TObject);
+    procedure DependMenuAddClick(Sender: TObject);
+    procedure DependMenuEditClick(Sender: TObject);
+    procedure DependMenuDeleteClick(Sender: TObject);
   private
     { Private declarations }
     FInfo: TInfoFile;
     procedure DoReadModel;
+    procedure DoReadDependencies;
     procedure DoWriteModel;
   public
     { Public declarations }
@@ -103,7 +112,9 @@ var
 implementation
 
 uses
-  DN.Types;
+  FMX.DialogService,
+  DN.Types,
+  DN.Version;
 
 {$R *.fmx}
 
@@ -160,9 +171,23 @@ begin
   edtID.Text := TGUID.NewGuid.ToString;
 end;
 
-procedure TMain.DoReadModel;
+procedure TMain.DoReadDependencies;
 var
   LDepedenci: TInfoDependency;
+begin
+  lstDependencies.BeginUpdate;
+  try
+    lstDependencies.Clear;
+    for LDepedenci in FInfo.Dependencies do
+    begin
+      lstDependencies.Items.Add(LDepedenci.ID.ToString + ' - ' + LDepedenci.Version.ToString);
+    end;
+  finally
+    lstDependencies.EndUpdate;
+  end;
+end;
+
+procedure TMain.DoReadModel;
 begin
   edtID.Text := FInfo.ID.ToString;
   edtName.Text := FInfo.Name;
@@ -182,12 +207,7 @@ begin
   spnbxCompilerMax.Value := FInfo.CompilerMax;
   edtFirstVersion.Text := FInfo.FirstVersion;
   edtReportUrl.Text := FInfo.ReportUrl;
-  for LDepedenci in FInfo.Dependencies do
-  begin
-    lstDependencies.Items.Add(LDepedenci.ID.ToString + ' - ' + LDepedenci.Version.ToString);
-  end;
-
-  {TODO -oM.E.Sysoev -cGeneral : Add Dependencies}
+  DoReadDependencies;
 end;
 
 procedure TMain.DoWriteModel;
@@ -229,6 +249,55 @@ end;
 procedure TMain.FormDestroy(Sender: TObject);
 begin
   FInfo.Free;
+end;
+
+procedure TMain.DependMenuAddClick(Sender: TObject);
+begin
+  TDialogService.InputQuery('Create dependencies', ['GUID', 'Min. Ver.'], ['', ''],
+    procedure(const AResult: TModalResult; const AValues: array of string)
+    var
+      Dep: TInfoDependency;
+    begin
+      if (AResult <> 1) or (AValues[0].IsEmpty) or (AValues[1].IsEmpty) then
+        Exit;
+      Dep.ID := TGUID.Create(AValues[0]);
+      if TDNVersion.TryParse(AValues[1], Dep.Version) then
+      begin
+        FInfo.Dependencies.Add(Dep);
+        DoReadDependencies;
+      end;
+    end);
+end;
+
+procedure TMain.DependMenuDeleteClick(Sender: TObject);
+begin
+  if lstDependencies.ItemIndex = -1 then
+    Exit;
+  FInfo.Dependencies.Delete(lstDependencies.ItemIndex);
+  DoReadDependencies;
+end;
+
+procedure TMain.DependMenuEditClick(Sender: TObject);
+var
+  LSelDep: TInfoDependency;
+begin
+  if lstDependencies.ItemIndex = -1 then
+    Exit;
+  LSelDep := FInfo.Dependencies[lstDependencies.ItemIndex];
+  TDialogService.InputQuery('Edit dependencies', ['GUID', 'Min. Ver.'], [LSelDep.ID.ToString, LSelDep.Version.ToString],
+    procedure(const AResult: TModalResult; const AValues: array of string)
+    var
+      Dep: TInfoDependency;
+    begin
+      if AResult <> 1 then
+        Exit;
+      Dep.ID := TGUID.Create(AValues[0]);
+      if TDNVersion.TryParse(AValues[1], Dep.Version) then
+      begin
+        FInfo.Dependencies[lstDependencies.ItemIndex] := Dep;
+        DoReadDependencies;
+      end;
+    end);
 end;
 
 end.
