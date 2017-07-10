@@ -1,0 +1,264 @@
+object viewMasterInstall: TviewMasterInstall
+  Align = Client
+  Size.Width = 635.000000000000000000
+  Size.Height = 450.000000000000000000
+  Size.PlatformDefault = False
+  object tbcInstall: TTabControl
+    Align = Client
+    Size.Width = 635.000000000000000000
+    Size.Height = 450.000000000000000000
+    Size.PlatformDefault = False
+    TabIndex = 5
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    Sizes = (
+      635s
+      424s
+      635s
+      424s
+      635s
+      424s
+      635s
+      424s
+      635s
+      424s
+      635s
+      424s)
+    object tbtm3: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 94.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Search Pathes'
+      ExplicitSize.cx = 94.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object grdSearchPathes: TGrid
+        Align = Client
+        CanFocus = True
+        ClipChildren = True
+        Size.Width = 635.000000000000000000
+        Size.Height = 424.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        RowCount = 0
+        OnGetValue = grdSearchPathesGetValue
+        Viewport.Width = 631.000000000000000000
+        Viewport.Height = 399.000000000000000000
+        object strngclmn2: TStringColumn
+          Header = 'Path'
+        end
+        object pclmn3: TPopupColumn
+          Header = 'Compiler Min'
+        end
+        object pclmn4: TPopupColumn
+          Header = 'Compiler Max'
+        end
+        object clmn1: TColumn
+          Header = 'platforms'
+        end
+      end
+    end
+    object tbtm6: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 107.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Browsing Pathes'
+      ExplicitSize.cx = 107.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object grdBrowsingPathes: TGrid
+        Align = Client
+        CanFocus = True
+        ClipChildren = True
+        Size.Width = 635.000000000000000000
+        Size.Height = 424.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        RowCount = 0
+        OnGetValue = grdSearchPathesGetValue
+        Viewport.Width = 631.000000000000000000
+        Viewport.Height = 399.000000000000000000
+        object strngclmn3: TStringColumn
+          Header = 'Path'
+        end
+        object pclmn5: TPopupColumn
+          Header = 'Compiler Min'
+        end
+        object pclmn6: TPopupColumn
+          Header = 'Compiler Max'
+        end
+        object clmn2: TColumn
+          Header = 'platforms'
+        end
+      end
+    end
+    object tbtm4: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 98.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Source Folders'
+      ExplicitSize.cx = 98.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object grdSourceFolders: TGrid
+        Align = Client
+        CanFocus = True
+        ClipChildren = True
+        Size.Width = 635.000000000000000000
+        Size.Height = 424.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        RowCount = 0
+        OnGetValue = grdSourceFoldersGetValue
+        Viewport.Width = 631.000000000000000000
+        Viewport.Height = 399.000000000000000000
+        object strngclmn4: TStringColumn
+          Header = 'Folder'
+        end
+        object chckclmn2: TCheckColumn
+          Header = 'Recursive'
+          Size.Width = 68.000000000000000000
+        end
+        object strngclmn5: TStringColumn
+          Header = 'Filter'
+        end
+        object strngclmn6: TStringColumn
+          Header = 'Base'
+        end
+        object pclmn7: TPopupColumn
+          Header = 'Compiler Min'
+        end
+        object pclmn8: TPopupColumn
+          Header = 'Compiler Max'
+        end
+      end
+    end
+    object tbtm7: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 84.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Raw Folders'
+      ExplicitSize.cx = 84.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object grdRawFolder: TGrid
+        Align = Client
+        CanFocus = True
+        ClipChildren = True
+        Size.Width = 635.000000000000000000
+        Size.Height = 424.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        RowCount = 0
+        OnGetValue = grdRawFolderGetValue
+        Viewport.Width = 631.000000000000000000
+        Viewport.Height = 399.000000000000000000
+        object strngclmn7: TStringColumn
+          Header = 'Folder'
+        end
+        object pclmn9: TPopupColumn
+          Header = 'Compiler Min'
+        end
+        object pclmn10: TPopupColumn
+          Header = 'Compiler Max'
+        end
+      end
+    end
+    object tbtm8: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 62.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Projects'
+      ExplicitSize.cx = 62.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object grdProjects: TGrid
+        Align = Client
+        CanFocus = True
+        ClipChildren = True
+        Size.Width = 635.000000000000000000
+        Size.Height = 424.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        RowCount = 0
+        OnGetValue = grdRawFolderGetValue
+        Viewport.Width = 631.000000000000000000
+        Viewport.Height = 399.000000000000000000
+        object strngclmn8: TStringColumn
+          Header = 'Project'
+        end
+        object pclmn11: TPopupColumn
+          Header = 'Compiler Min'
+        end
+        object pclmn12: TPopupColumn
+          Header = 'Compiler Max'
+        end
+      end
+    end
+    object tbtm9: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 59.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Experts'
+      ExplicitSize.cx = 59.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
+      object grdExperts: TGrid
+        Align = Client
+        CanFocus = True
+        ClipChildren = True
+        Size.Width = 635.000000000000000000
+        Size.Height = 424.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        RowCount = 0
+        OnGetValue = grdExpertsGetValue
+        Viewport.Width = 631.000000000000000000
+        Viewport.Height = 399.000000000000000000
+        object strngclmn1: TStringColumn
+          Header = 'Expert'
+        end
+        object chckclmn1: TCheckColumn
+          Header = 'Hot Reload'
+          Size.Width = 76.000000000000000000
+        end
+        object pclmn1: TPopupColumn
+          Header = 'Compiler Min'
+        end
+        object pclmn2: TPopupColumn
+          Header = 'CompilerMax'
+        end
+      end
+    end
+  end
+end
