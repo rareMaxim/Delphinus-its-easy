@@ -9,7 +9,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Top = 2.000000000000000000
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
-    Position.Y = 422.000000000000000000
+    Position.Y = 417.000000000000000000
     Size.Width = 540.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
@@ -245,6 +245,7 @@ object viewMasterInfo: TviewMasterInfo
         Size.PlatformDefault = False
         TabOrder = 0
         Text = 'Browse'
+        OnClick = btnLicenseFileBrowseClick
       end
     end
   end
@@ -352,8 +353,8 @@ object viewMasterInfo: TviewMasterInfo
       TabOrder = 1
     end
     object pmDependencies: TPopupMenu
-      Left = 354
-      Top = 264
+      Left = 266
+      Top = 520
       object DependMenuAdd: TMenuItem
         Text = 'Add'
         OnClick = DependMenuAddClick
@@ -407,7 +408,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Right = 2.000000000000000000
     Padding.Bottom = 2.000000000000000000
     Size.Width = 540.000000000000000000
-    Size.Height = 168.000000000000000000
+    Size.Height = 173.000000000000000000
     Size.PlatformDefault = False
     Text = 'Dependencies'
     TabOrder = 11
@@ -415,15 +416,16 @@ object viewMasterInfo: TviewMasterInfo
       Align = Client
       CanFocus = True
       ClipChildren = True
+      PopupMenu = pmDependencies
       Size.Width = 536.000000000000000000
-      Size.Height = 149.000000000000000000
+      Size.Height = 154.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       RowCount = 0
       OnGetValue = grdDependenciesGetValue
       OnSetValue = grdDependenciesSetValue
       Viewport.Width = 532.000000000000000000
-      Viewport.Height = 124.000000000000000000
+      Viewport.Height = 129.000000000000000000
       object strngclmnDependenciesGUID: TStringColumn
         Header = 'GUID'
         Size.Width = 201.000000000000000000
@@ -544,7 +546,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Top = 2.000000000000000000
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
-    Position.Y = 395.000000000000000000
+    Position.Y = 390.000000000000000000
     Size.Width = 540.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
@@ -578,7 +580,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Top = 17.000000000000000000
     Padding.Right = 2.000000000000000000
     Padding.Bottom = 2.000000000000000000
-    Position.Y = 283.000000000000000000
+    Position.Y = 278.000000000000000000
     Size.Width = 540.000000000000000000
     Size.Height = 112.000000000000000000
     Size.PlatformDefault = False
@@ -683,14 +685,5 @@ object viewMasterInfo: TviewMasterInfo
         TextPrompt = 'spring4d'
       end
     end
-  end
-  object spl1: TSplitter
-    Align = Top
-    Cursor = crVSplit
-    MinSize = 20.000000000000000000
-    Position.Y = 278.000000000000000000
-    Size.Width = 540.000000000000000000
-    Size.Height = 5.000000000000000000
-    Size.PlatformDefault = False
   end
 end

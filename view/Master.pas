@@ -45,6 +45,7 @@ type
     { Private declarations }
   protected
    // function IndexOf<T>():Integer;
+    procedure LoadProject(const APath: string);
   public
     { Public declarations }
   end;
@@ -77,9 +78,7 @@ var
 begin
   if SelectDirectory('Project dir', '', LDir) then
   begin
-    edtProjectDir.Text := LDir;
-    viewMaterInfo.ReadModel(LDir);
-    viewMasterInstall.ReadModel(LDir);
+    LoadProject(LDir);
   end;
 end;
 
@@ -90,6 +89,18 @@ begin
 
   viewMasterInstall := TviewMasterInstall.Create(tbtm2);
   viewMasterInstall.Parent := tbtm2;
+end;
+
+procedure TMain.LoadProject(const APath: string);
+var
+  LPath: string;
+begin
+  if not DirectoryExists(APath) then
+    Exit;
+  LPath := IncludeTrailingPathDelimiter(APath);
+  edtProjectDir.Text := LPath;
+  viewMaterInfo.ReadModel(LPath);
+  viewMasterInstall.ReadModel(LPath);
 end;
 
 end.

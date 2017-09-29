@@ -95,7 +95,6 @@ type
     lyt8: TLayout;
     lblRepositoryName: TLabel;
     edtRepositoryName: TEdit;
-    spl1: TSplitter;
     procedure btnIDGenerateClick(Sender: TObject);
     procedure btnPictureBrowseClick(Sender: TObject);
     procedure grdDependenciesGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
@@ -103,9 +102,11 @@ type
     procedure DependMenuAddClick(Sender: TObject);
     procedure DependMenuEditClick(Sender: TObject);
     procedure DependMenuDeleteClick(Sender: TObject);
+    procedure btnLicenseFileBrowseClick(Sender: TObject);
   private
     { Private declarations }
     FInfo: TInfoFile;
+    FProjectPath: string;
   public
     { Public declarations }
     procedure ReadModel(const ProjectPath: string);
@@ -120,11 +121,12 @@ var
 implementation
 
 uses
+  System.IOUtils,
+  FMX.DialogService,
   DN.Utils,
   DN.Types,
-  System.IOUtils,
   DN.Version,
-  FMX.DialogService;
+  DIE.Utils;
 
 {$R *.fmx}
 
@@ -133,6 +135,20 @@ uses
 procedure TviewMasterInfo.btnIDGenerateClick(Sender: TObject);
 begin
   edtID.Text := TGUID.NewGuid.ToString;
+end;
+
+procedure TviewMasterInfo.btnLicenseFileBrowseClick(Sender: TObject);
+var
+  OD: TOpenDialog;
+begin
+  OD := TOpenDialog.Create(Self);
+  try
+    if not OD.Execute then
+      Exit;
+    edtLicenseFile.Text := TUtils.ToLocalPath(FProjectPath, OD.FileName);
+  finally
+    OD.Free;
+  end;
 end;
 
 procedure TviewMasterInfo.btnPictureBrowseClick(Sender: TObject);
@@ -144,7 +160,7 @@ begin
     OD.Filter := 'jpg|*.jpg|png|*.png';
     if not OD.Execute then
       Exit;
-    edtPicture.Text := OD.FileName;
+    edtPicture.Text := TUtils.ToLocalPath(FProjectPath, OD.FileName);
   finally
     OD.Free;
   end;
@@ -223,6 +239,7 @@ end;
 
 procedure TviewMasterInfo.ReadModel(const ProjectPath: string);
 begin
+  FProjectPath := ProjectPath;
   if TFile.Exists(TPath.Combine(ProjectPath, CInfoFile)) then
     FInfo.LoadFromFile(TPath.Combine(ProjectPath, CInfoFile));
   edtID.Text := FInfo.ID.ToString;
