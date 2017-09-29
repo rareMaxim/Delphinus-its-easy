@@ -63,11 +63,18 @@ type
     pclmn12: TPopupColumn;
     procedure grdSearchPathesGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
     procedure grdSourceFoldersGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
-    procedure grdRawFolderGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
     procedure grdExpertsGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
+    procedure grdBrowsingPathesGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
+    procedure grdProjectsGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
+    procedure grdRawFolderGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
+    procedure grdProjectsSetValue(Sender: TObject; const ACol, ARow: Integer; const Value: TValue);
+    procedure grdBrowsingPathesSetValue(Sender: TObject; const ACol, ARow: Integer; const Value: TValue);
   private
     { Private declarations }
     FInstall: TInstallationFile;
+  protected
+    function DelphiIdToName(const AId: Integer): TValue;
+    function DelphiNameToId(const AName: string): Integer;
   public
     { Public declarations }
     procedure ReadModel(const ProjectPath: string);
@@ -112,128 +119,139 @@ begin
   end;
 end;
 
+function TviewMasterInstall.DelphiIdToName(const AId: Integer): TValue;
+begin
+  if AId >= Low(CDelphiNames) then
+    Result := CDelphiNames[AId];
+end;
+
+function TviewMasterInstall.DelphiNameToId(const AName: string): Integer;
+var
+  I: Integer;
+begin
+  Result := 0;
+  for I := Low(CDelphiNames) to High(CDelphiNames) do
+    if CDelphiNames[I] = AName then
+      Exit(I);
+end;
+
 destructor TviewMasterInstall.Destroy;
 begin
   FInstall.Free;
   inherited;
 end;
 
-procedure TviewMasterInstall.grdSourceFoldersGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
+procedure TviewMasterInstall.grdSourceFoldersGetValue(Sender: TObject; const
+  ACol, ARow: Integer; var Value: TValue);
 begin
   case ACol of
     0:
-      begin
-        Value := FInstall.SourceFolders[ARow].Folder;
-      end;
+      Value := FInstall.SourceFolders[ARow].Folder;
     1:
-      begin
-        Value := FInstall.SourceFolders[ARow].Recursive;
-      end;
+      Value := FInstall.SourceFolders[ARow].Recursive;
     2:
-      begin
-        Value := FInstall.SourceFolders[ARow].Filter;
-      end;
+      Value := FInstall.SourceFolders[ARow].Filter;
     3:
-      begin
-        Value := FInstall.SourceFolders[ARow].Base;
-      end;
+      Value := FInstall.SourceFolders[ARow].Base;
     4:
-      begin
-        Value := CDelphiNames[FInstall.SourceFolders[ARow].CompilerMin];
-      end;
+      Value := DelphiIdToName(FInstall.SourceFolders[ARow].CompilerMin);
     5:
-      begin
-        Value := CDelphiNames[FInstall.SourceFolders[ARow].CompilerMax];
-      end;
+      Value := DelphiIdToName(FInstall.SourceFolders[ARow].CompilerMax);
   end;
 end;
 
-procedure TviewMasterInstall.grdExpertsGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
+procedure TviewMasterInstall.grdBrowsingPathesGetValue(Sender: TObject; const
+  ACol, ARow: Integer; var Value: TValue);
 begin
   case ACol of
     0:
-      begin
-        Value := FInstall.Experts[ARow].Expert;
-      end;
+      Value := FInstall.BrowsingPathes[ARow].Path;
     1:
-      begin
-        Value := FInstall.Experts[ARow].HotReload;
-      end;
+      Value := DelphiIdToName(FInstall.BrowsingPathes[ARow].CompilerMin);
     2:
-      begin
-        Value := CDelphiNames[FInstall.Experts[ARow].CompilerMin];
-      end;
+      Value := DelphiIdToName(FInstall.BrowsingPathes[ARow].CompilerMax);
     3:
-      begin
-        Value := CDelphiNames[FInstall.Experts[ARow].CompilerMax];
-      end;
+      Value := GeneratePlatformString(FInstall.BrowsingPathes[ARow].Platforms);
   end;
 end;
 
-procedure TviewMasterInstall.grdRawFolderGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
+procedure TviewMasterInstall.grdBrowsingPathesSetValue(Sender: TObject; const
+  ACol, ARow: Integer; const Value: TValue);
 begin
-  case ACol of
-    0:
-      begin
-        if Sender = grdRawFolder then
-          Value := FInstall.RawFolders[ARow].Folder;
-        if Sender = grdProjects then
-          Value := FInstall.Projects[ARow].Project;
-      end;
-    1:
-      begin
-        if Sender = grdRawFolder then
-          Value := CDelphiNames[FInstall.RawFolders[ARow].CompilerMin];
-        if Sender = grdProjects then
-          Value := CDelphiNames[FInstall.Projects[ARow].CompilerMin];
-      end;
-    2:
-      begin
-        if Sender = grdRawFolder then
-          Value := CDelphiNames[FInstall.RawFolders[ARow].CompilerMax];
-        if Sender = grdProjects then
-          Value := CDelphiNames[FInstall.Projects[ARow].CompilerMax];
-      end;
-  end;
+//
 end;
 
-procedure TviewMasterInstall.grdSearchPathesGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
+procedure TviewMasterInstall.grdExpertsGetValue(Sender: TObject; const ACol,
+  ARow: Integer; var Value: TValue);
 begin
   case ACol of
     0:
-      begin
-        if Sender = grdSearchPathes then
-          Value := FInstall.SearchPathes[ARow].Path;
-        if Sender = grdBrowsingPathes then
-          Value := FInstall.BrowsingPathes[ARow].Path;
-      end;
+      Value := FInstall.Experts[ARow].Expert;
     1:
-      begin
-        if Sender = grdSearchPathes then
-          Value := CDelphiNames[FInstall.SearchPathes[ARow].CompilerMin];
-        if Sender = grdBrowsingPathes then
-          Value := CDelphiNames[FInstall.BrowsingPathes[ARow].CompilerMin];
-      end;
+      Value := FInstall.Experts[ARow].HotReload;
     2:
-      begin
-        if Sender = grdSearchPathes then
-          Value := CDelphiNames[FInstall.SearchPathes[ARow].CompilerMax];
-        if Sender = grdBrowsingPathes then
-          Value := CDelphiNames[FInstall.BrowsingPathes[ARow].CompilerMax];
-      end;
+      Value := CDelphiNames[FInstall.Experts[ARow].CompilerMin];
     3:
-      begin
-      //  if Sender = grdSearchPathes then
-       //   Value := FInstall.SearchPathes[ARow];
-      //  if Sender = grdBrowsingPathes then
-        //  Value := FInstall.BrowsingPathes[ARow].CompilerMax;
-      end;
+      Value := CDelphiNames[FInstall.Experts[ARow].CompilerMax];
+  end;
+end;
+
+procedure TviewMasterInstall.grdProjectsGetValue(Sender: TObject; const ACol,
+  ARow: Integer; var Value: TValue);
+begin
+  case ACol of
+    0:
+      Value := FInstall.Projects[ARow].Project;
+    1:
+      Value := DelphiIdToName(FInstall.Projects[ARow].CompilerMin);
+    2:
+      Value := DelphiIdToName(FInstall.Projects[ARow].CompilerMax);
+  end;
+end;
+
+procedure TviewMasterInstall.grdProjectsSetValue(Sender: TObject; const ACol,
+  ARow: Integer; const Value: TValue);
+begin
+  case ACol of
+    0:
+      FInstall.Projects[ARow].Project := Value.AsType<string>;
+    1:
+      FInstall.Projects[ARow].CompilerMin := DelphiNameToId(Value.AsType<string>);
+    2:
+      FInstall.Projects[ARow].CompilerMax := DelphiNameToId(Value.AsType<string>);
+  end;
+end;
+
+procedure TviewMasterInstall.grdRawFolderGetValue(Sender: TObject; const ACol,
+  ARow: Integer; var Value: TValue);
+begin
+  case ACol of
+    0:
+      Value := FInstall.SearchPathes[ARow].Path;
+    1:
+      Value := DelphiIdToName(FInstall.SearchPathes[ARow].CompilerMin);
+    2:
+      Value := DelphiIdToName(FInstall.SearchPathes[ARow].CompilerMax);
+  end;
+end;
+
+procedure TviewMasterInstall.grdSearchPathesGetValue(Sender: TObject; const ACol,
+  ARow: Integer; var Value: TValue);
+begin
+  case ACol of
+    0:
+      Value := FInstall.SearchPathes[ARow].Path;
+    1:
+      Value := CDelphiNames[FInstall.SearchPathes[ARow].CompilerMin];
+    2:
+      Value := CDelphiNames[FInstall.SearchPathes[ARow].CompilerMax];
   end;
 end;
 
 procedure TviewMasterInstall.ReadModel(const ProjectPath: string);
 begin
   FInstall.LoadFromFile(TPath.Combine(ProjectPath, CInstallFile));
+
   grdSearchPathes.RowCount := Length(FInstall.SearchPathes);
   grdBrowsingPathes.RowCount := Length(FInstall.BrowsingPathes);
   grdSourceFolders.RowCount := Length(FInstall.SourceFolders);

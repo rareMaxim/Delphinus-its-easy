@@ -82,6 +82,20 @@ type
     DependMenuAdd: TMenuItem;
     DependMenuEdit: TMenuItem;
     DependMenuDelete: TMenuItem;
+    lyt5: TLayout;
+    lblRepositoryRedirectIssues: TLabel;
+    swtchRepositoryRedirectIssues: TSwitch;
+    grpRepository: TGroupBox;
+    lyt6: TLayout;
+    lblRepositoryType: TLabel;
+    edtRepositoryType: TEdit;
+    lyt7: TLayout;
+    lblRepositoryUser: TLabel;
+    edtRepositoryUser: TEdit;
+    lyt8: TLayout;
+    lblRepositoryName: TLabel;
+    edtRepositoryName: TEdit;
+    spl1: TSplitter;
     procedure btnIDGenerateClick(Sender: TObject);
     procedure btnPictureBrowseClick(Sender: TObject);
     procedure grdDependenciesGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
@@ -184,7 +198,8 @@ begin
   if grdDependencies.Row = -1 then
     Exit;
   LSelDep := FInfo.Dependencies[grdDependencies.Row];
-  TDialogService.InputQuery('Edit dependencies', ['GUID', 'Min. Ver.'], [LSelDep.ID.ToString, LSelDep.Version.ToString],
+  TDialogService.InputQuery('Edit dependencies', ['GUID', 'Min. Ver.'], [LSelDep.ID.ToString,
+    LSelDep.Version.ToString],
     procedure(const AResult: TModalResult; const AValues: array of string)
     var
       Dep: TInfoDependency;
@@ -229,6 +244,11 @@ begin
   edtFirstVersion.Text := FInfo.FirstVersion;
   edtReportUrl.Text := FInfo.ReportUrl;
   grdDependencies.RowCount := FInfo.Dependencies.Count;
+
+  edtRepositoryType.Text := FInfo.RepositoryType;
+  edtRepositoryUser.Text := FInfo.RepositoryUser;
+  edtRepositoryName.Text := FInfo.Repository;
+  swtchRepositoryRedirectIssues.IsChecked := FInfo.RepositoryRedirectIssues;
 end;
 
 procedure TviewMasterInfo.WriteModel(const ProjectPath: string);
@@ -259,12 +279,19 @@ begin
   FInfo.CompilerMin := cbbCompilerMin.ItemIndex + Low(DN.Utils.CDelphiNames);
   FInfo.CompilerMax := cbbCompilerMax.ItemIndex + Low(DN.Utils.CDelphiNames);
 
+  FInfo.RepositoryType := edtRepositoryType.Text;
+  FInfo.RepositoryUser := edtRepositoryUser.Text;
+  FInfo.Repository := edtRepositoryName.Text;
+  FInfo.RepositoryRedirectIssues := swtchRepositoryRedirectIssues.IsChecked;
+
   FInfo.FirstVersion := edtFirstVersion.Text;
   FInfo.ReportUrl := edtReportUrl.Text;
   FInfo.SaveToFile(TPath.Combine(ProjectPath, CInfoFile));
+
 end;
 
-procedure TviewMasterInfo.grdDependenciesGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
+procedure TviewMasterInfo.grdDependenciesGetValue(Sender: TObject; const ACol,
+  ARow: Integer; var Value: TValue);
 begin
   case ACol of
     0:
@@ -278,7 +305,8 @@ begin
   end;
 end;
 
-procedure TviewMasterInfo.grdDependenciesSetValue(Sender: TObject; const ACol, ARow: Integer; const Value: TValue);
+procedure TviewMasterInfo.grdDependenciesSetValue(Sender: TObject; const ACol,
+  ARow: Integer; const Value: TValue);
 var
   LDepen: TInfoDependency;
 begin

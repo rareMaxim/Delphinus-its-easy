@@ -8,7 +8,7 @@ object viewMasterInstall: TviewMasterInstall
     Size.Width = 635.000000000000000000
     Size.Height = 450.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 5
+    TabIndex = 1
     TabOrder = 0
     TabPosition = PlatformDefault
     Sizes = (
@@ -59,7 +59,7 @@ object viewMasterInstall: TviewMasterInstall
           Header = 'Compiler Max'
         end
         object clmn1: TColumn
-          Header = 'platforms'
+          Header = 'Platforms'
         end
       end
     end
@@ -67,7 +67,7 @@ object viewMasterInstall: TviewMasterInstall
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 107.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
@@ -85,7 +85,8 @@ object viewMasterInstall: TviewMasterInstall
         Size.PlatformDefault = False
         TabOrder = 0
         RowCount = 0
-        OnGetValue = grdSearchPathesGetValue
+        OnGetValue = grdBrowsingPathesGetValue
+        OnSetValue = grdBrowsingPathesSetValue
         Viewport.Width = 631.000000000000000000
         Viewport.Height = 399.000000000000000000
         object strngclmn3: TStringColumn
@@ -206,7 +207,8 @@ object viewMasterInstall: TviewMasterInstall
         Size.PlatformDefault = False
         TabOrder = 0
         RowCount = 0
-        OnGetValue = grdRawFolderGetValue
+        OnGetValue = grdProjectsGetValue
+        OnSetValue = grdProjectsSetValue
         Viewport.Width = 631.000000000000000000
         Viewport.Height = 399.000000000000000000
         object strngclmn8: TStringColumn
@@ -224,7 +226,7 @@ object viewMasterInstall: TviewMasterInstall
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 59.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False

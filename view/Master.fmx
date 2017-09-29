@@ -66,7 +66,7 @@ object Main: TMain
     Size.Width = 500.000000000000000000
     Size.Height = 552.000000000000000000
     Size.PlatformDefault = False
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 2
     TabPosition = PlatformDefault
     Sizes = (
@@ -78,19 +78,21 @@ object Main: TMain
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 41.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
       Text = 'Info'
+      ExplicitSize.cx = 41.000000000000000000
+      ExplicitSize.cy = 26.000000000000000000
     end
     object tbtm2: TTabItem
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 52.000000000000000000
       Size.Height = 26.000000000000000000
       Size.PlatformDefault = False

@@ -1,7 +1,7 @@
 object viewMasterInfo: TviewMasterInfo
   Align = Client
-  Size.Width = 492.000000000000000000
-  Size.Height = 469.000000000000000000
+  Size.Width = 540.000000000000000000
+  Size.Height = 617.000000000000000000
   Size.PlatformDefault = False
   object lyt3: TLayout
     Align = Top
@@ -9,8 +9,8 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Top = 2.000000000000000000
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
-    Position.Y = 278.000000000000000000
-    Size.Width = 492.000000000000000000
+    Position.Y = 422.000000000000000000
+    Size.Width = 540.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 5
@@ -30,7 +30,7 @@ object viewMasterInfo: TviewMasterInfo
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Client
       TabOrder = 1
-      Size.Width = 360.000000000000000000
+      Size.Width = 408.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
     end
@@ -42,7 +42,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
     Position.Y = 54.000000000000000000
-    Size.Width = 492.000000000000000000
+    Size.Width = 540.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 0
@@ -61,7 +61,7 @@ object viewMasterInfo: TviewMasterInfo
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Client
       TabOrder = 1
-      Size.Width = 360.000000000000000000
+      Size.Width = 408.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = '*.png or *.jpg'
@@ -85,7 +85,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
     Position.Y = 197.000000000000000000
-    Size.Width = 492.000000000000000000
+    Size.Width = 540.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
@@ -123,7 +123,7 @@ object viewMasterInfo: TviewMasterInfo
     end
     object cbbPackageCompilerMax: TComboBox
       Align = Client
-      Size.Width = 108.000000000000000000
+      Size.Width = 156.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 2
@@ -145,7 +145,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
     Position.Y = 27.000000000000000000
-    Size.Width = 492.000000000000000000
+    Size.Width = 540.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 8
@@ -164,7 +164,7 @@ object viewMasterInfo: TviewMasterInfo
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Client
       TabOrder = 1
-      Size.Width = 360.000000000000000000
+      Size.Width = 408.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = 'Simple name you package'
@@ -177,7 +177,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
     Position.Y = 143.000000000000000000
-    Size.Width = 492.000000000000000000
+    Size.Width = 540.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 6
@@ -198,7 +198,7 @@ object viewMasterInfo: TviewMasterInfo
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Client
       TabOrder = 1
-      Size.Width = 360.000000000000000000
+      Size.Width = 408.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = 'MPL-2.0'
@@ -211,7 +211,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
     Position.Y = 170.000000000000000000
-    Size.Width = 492.000000000000000000
+    Size.Width = 540.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 4
@@ -232,7 +232,7 @@ object viewMasterInfo: TviewMasterInfo
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Client
       TabOrder = 0
-      Size.Width = 360.000000000000000000
+      Size.Width = 408.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = 'Source/License.txt'
@@ -254,7 +254,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Top = 2.000000000000000000
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
-    Size.Width = 492.000000000000000000
+    Size.Width = 540.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 9
@@ -275,7 +275,7 @@ object viewMasterInfo: TviewMasterInfo
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Client
       TabOrder = 1
-      Size.Width = 360.000000000000000000
+      Size.Width = 408.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = '{B19C0505-6D70-470E-A575-9BBA549AE8A8}'
@@ -299,7 +299,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
     Position.Y = 224.000000000000000000
-    Size.Width = 492.000000000000000000
+    Size.Width = 540.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
@@ -337,7 +337,7 @@ object viewMasterInfo: TviewMasterInfo
     end
     object cbbCompilerMax: TComboBox
       Align = Client
-      Size.Width = 108.000000000000000000
+      Size.Width = 156.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 2
@@ -375,7 +375,7 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
     Position.Y = 251.000000000000000000
-    Size.Width = 492.000000000000000000
+    Size.Width = 540.000000000000000000
     Size.Height = 27.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 7
@@ -394,7 +394,7 @@ object viewMasterInfo: TviewMasterInfo
       Touch.InteractiveGestures = [LongTap, DoubleTap]
       Align = Client
       TabOrder = 1
-      Size.Width = 360.000000000000000000
+      Size.Width = 408.000000000000000000
       Size.Height = 23.000000000000000000
       Size.PlatformDefault = False
       TextPrompt = '0.1.2-Alpha'
@@ -406,24 +406,24 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Top = 17.000000000000000000
     Padding.Right = 2.000000000000000000
     Padding.Bottom = 2.000000000000000000
-    Size.Width = 492.000000000000000000
-    Size.Height = 164.000000000000000000
+    Size.Width = 540.000000000000000000
+    Size.Height = 168.000000000000000000
     Size.PlatformDefault = False
     Text = 'Dependencies'
-    TabOrder = 10
+    TabOrder = 11
     object grdDependencies: TGrid
       Align = Client
       CanFocus = True
       ClipChildren = True
-      Size.Width = 488.000000000000000000
-      Size.Height = 145.000000000000000000
+      Size.Width = 536.000000000000000000
+      Size.Height = 149.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 0
       RowCount = 0
       OnGetValue = grdDependenciesGetValue
       OnSetValue = grdDependenciesSetValue
-      Viewport.Width = 488.000000000000000000
-      Viewport.Height = 145.000000000000000000
+      Viewport.Width = 532.000000000000000000
+      Viewport.Height = 124.000000000000000000
       object strngclmnDependenciesGUID: TStringColumn
         Header = 'GUID'
         Size.Width = 201.000000000000000000
@@ -441,15 +441,15 @@ object viewMasterInfo: TviewMasterInfo
     Padding.Right = 5.000000000000000000
     Padding.Bottom = 2.000000000000000000
     Position.Y = 81.000000000000000000
-    Size.Width = 492.000000000000000000
+    Size.Width = 540.000000000000000000
     Size.Height = 62.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 11
+    TabOrder = 12
     object lyt2: TLayout
       Align = Top
       Position.X = 2.000000000000000000
       Position.Y = 2.000000000000000000
-      Size.Width = 485.000000000000000000
+      Size.Width = 533.000000000000000000
       Size.Height = 27.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 11
@@ -506,7 +506,7 @@ object viewMasterInfo: TviewMasterInfo
       Margins.Left = 125.000000000000000000
       Position.X = 127.000000000000000000
       Position.Y = 29.000000000000000000
-      Size.Width = 360.000000000000000000
+      Size.Width = 408.000000000000000000
       Size.Height = 27.000000000000000000
       Size.PlatformDefault = False
       TabOrder = 10
@@ -537,5 +537,160 @@ object viewMasterInfo: TviewMasterInfo
         Text = 'IOS64'
       end
     end
+  end
+  object lyt5: TLayout
+    Align = Top
+    Padding.Left = 2.000000000000000000
+    Padding.Top = 2.000000000000000000
+    Padding.Right = 5.000000000000000000
+    Padding.Bottom = 2.000000000000000000
+    Position.Y = 395.000000000000000000
+    Size.Width = 540.000000000000000000
+    Size.Height = 27.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 14
+    object lblRepositoryRedirectIssues: TLabel
+      Align = Left
+      StyledSettings = [Family, Size, FontColor]
+      Margins.Right = 5.000000000000000000
+      Position.X = 2.000000000000000000
+      Position.Y = 2.000000000000000000
+      Size.Width = 191.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Trailing
+      Text = 'Repository Redirect Issues:'
+    end
+    object swtchRepositoryRedirectIssues: TSwitch
+      Align = Right
+      IsChecked = False
+      Position.X = 457.000000000000000000
+      Position.Y = 2.000000000000000000
+      Size.Width = 78.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+  end
+  object grpRepository: TGroupBox
+    Align = Top
+    Padding.Left = 2.000000000000000000
+    Padding.Top = 17.000000000000000000
+    Padding.Right = 2.000000000000000000
+    Padding.Bottom = 2.000000000000000000
+    Position.Y = 283.000000000000000000
+    Size.Width = 540.000000000000000000
+    Size.Height = 112.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Repository'
+    TabOrder = 10
+    object lyt6: TLayout
+      Align = Top
+      Padding.Left = 2.000000000000000000
+      Padding.Top = 2.000000000000000000
+      Padding.Right = 5.000000000000000000
+      Padding.Bottom = 2.000000000000000000
+      Position.X = 2.000000000000000000
+      Position.Y = 17.000000000000000000
+      Size.Width = 536.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      object lblRepositoryType: TLabel
+        Align = Left
+        Margins.Right = 5.000000000000000000
+        Position.X = 2.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 120.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Trailing
+        Text = 'Type: '
+      end
+      object edtRepositoryType: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        TabOrder = 1
+        Size.Width = 404.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'bitbucket'
+      end
+    end
+    object lyt7: TLayout
+      Align = Top
+      Padding.Left = 2.000000000000000000
+      Padding.Top = 2.000000000000000000
+      Padding.Right = 5.000000000000000000
+      Padding.Bottom = 2.000000000000000000
+      Position.X = 2.000000000000000000
+      Position.Y = 44.000000000000000000
+      Size.Width = 536.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      object lblRepositoryUser: TLabel
+        Align = Left
+        Margins.Right = 5.000000000000000000
+        Position.X = 2.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 120.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Trailing
+        Text = 'User: '
+      end
+      object edtRepositoryUser: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        TabOrder = 1
+        Size.Width = 404.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'sglienke'
+      end
+    end
+    object lyt8: TLayout
+      Align = Top
+      Padding.Left = 2.000000000000000000
+      Padding.Top = 2.000000000000000000
+      Padding.Right = 5.000000000000000000
+      Padding.Bottom = 2.000000000000000000
+      Position.X = 2.000000000000000000
+      Position.Y = 71.000000000000000000
+      Size.Width = 536.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      object lblRepositoryName: TLabel
+        Align = Left
+        Margins.Right = 5.000000000000000000
+        Position.X = 2.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 120.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.HorzAlign = Trailing
+        Text = 'Name:'
+      end
+      object edtRepositoryName: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        TabOrder = 1
+        Size.Width = 404.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TextPrompt = 'spring4d'
+      end
+    end
+  end
+  object spl1: TSplitter
+    Align = Top
+    Cursor = crVSplit
+    MinSize = 20.000000000000000000
+    Position.Y = 278.000000000000000000
+    Size.Width = 540.000000000000000000
+    Size.Height = 5.000000000000000000
+    Size.PlatformDefault = False
   end
 end

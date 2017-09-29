@@ -26,8 +26,7 @@ uses
   System.Rtti,
   FMX.Grid.Style,
   FMX.Grid,
-  FMX.ScrollBox,
-  ksTabControl;
+  FMX.ScrollBox;
 
 type
   TMain = class(TForm)
