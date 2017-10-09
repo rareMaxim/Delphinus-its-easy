@@ -23,7 +23,9 @@ uses
   FMX.Edit,
   FMX.Controls.Presentation,
   FMX.Layouts,
-  FMX.Menus;
+  FMX.Menus,
+  UI.PlatformSelector,
+  UI.CompilerVersions;
 
 type
   TviewMasterInfo = class(TFrame)
@@ -36,10 +38,6 @@ type
     btnPictureBrowse: TEditButton;
     lytPackageCompiler: TLayout;
     lblPackageCompiler: TLabel;
-    lblPackageCompilerMin: TLabel;
-    lblPackageCompilerMax: TLabel;
-    cbbPackageCompilerMax: TComboBox;
-    cbbPackageCompilerMin: TComboBox;
     lytName: TLayout;
     lblName: TLabel;
     edtName: TEdit;
@@ -56,10 +54,6 @@ type
     btnIDGenerate: TEditButton;
     lytCompiler: TLayout;
     lblCompiler: TLabel;
-    lblCompilerMin: TLabel;
-    lblCompilerMax: TLabel;
-    cbbCompilerMax: TComboBox;
-    cbbCompilerMin: TComboBox;
     lyt1: TLayout;
     lblFirstVersion: TLabel;
     edtFirstVersion: TEdit;
@@ -68,16 +62,6 @@ type
     strngclmnDependenciesGUID: TStringColumn;
     strngclmnDependenciesMinVersion: TStringColumn;
     lytPlatforms: TLayout;
-    lyt2: TLayout;
-    chkPlatformsWin32: TCheckBox;
-    chkPlatformsWin64: TCheckBox;
-    chkPlatformsOSX32: TCheckBox;
-    chkPlatformsLinux64: TCheckBox;
-    lblPlatforms: TLabel;
-    lyt4: TLayout;
-    chkPlatformsAndroid: TCheckBox;
-    chkPlatformsIOS32: TCheckBox;
-    chkPlatformsIOS64: TCheckBox;
     pmDependencies: TPopupMenu;
     DependMenuAdd: TMenuItem;
     DependMenuEdit: TMenuItem;
@@ -106,7 +90,10 @@ type
   private
     { Private declarations }
     FInfo: TInfoFile;
+    FPlatformSelector: TPlatformSelector;
     FProjectPath: string;
+    FPackageCompiler: TCompilerVersions;
+    FCompiler: TCompilerVersions;
   public
     { Public declarations }
     procedure ReadModel(const ProjectPath: string);
@@ -126,7 +113,8 @@ uses
   DN.Utils,
   DN.Types,
   DN.Version,
-  DIE.Utils;
+  DE.Constants,
+  DE.Utils;
 
 {$R *.fmx}
 
@@ -167,18 +155,21 @@ begin
 end;
 
 constructor TviewMasterInfo.Create(AOwner: TComponent);
-var
-  I: Integer;
 begin
   inherited;
   FInfo := TInfoFile.Create;
-  for I := Low(DN.Utils.CDelphiNames) to High(DN.Utils.CDelphiNames) do
-  begin
-    cbbCompilerMin.Items.Add(DN.Utils.CDelphiNames[I]);
-    cbbCompilerMax.Items.Add(DN.Utils.CDelphiNames[I]);
-    cbbPackageCompilerMin.Items.Add(DN.Utils.CDelphiNames[I]);
-    cbbPackageCompilerMax.Items.Add(DN.Utils.CDelphiNames[I]);
-  end;
+
+  FPlatformSelector := TPlatformSelector.Create(lytPlatforms);
+  FPlatformSelector.Parent := lytPlatforms;
+  FPlatformSelector.Align := TAlignLayout.Client;
+
+  FPackageCompiler := TCompilerVersions.Create(lytPackageCompiler);
+  FPackageCompiler.Parent := lytPackageCompiler;
+  FPackageCompiler.Align := TAlignLayout.Client;
+
+  FCompiler := TCompilerVersions.Create(lytCompiler);
+  FCompiler.Parent := lytCompiler;
+  FCompiler.Align := TAlignLayout.Client;
 end;
 
 procedure TviewMasterInfo.DependMenuAddClick(Sender: TObject);
@@ -214,8 +205,7 @@ begin
   if grdDependencies.Row = -1 then
     Exit;
   LSelDep := FInfo.Dependencies[grdDependencies.Row];
-  TDialogService.InputQuery('Edit dependencies', ['GUID', 'Min. Ver.'], [LSelDep.ID.ToString,
-    LSelDep.Version.ToString],
+  TDialogService.InputQuery('Edit dependencies', ['GUID', 'Min. Ver.'], [LSelDep.ID.ToString, LSelDep.Version.ToString],
     procedure(const AResult: TModalResult; const AValues: array of string)
     var
       Dep: TInfoDependency;
@@ -247,17 +237,15 @@ begin
   edtPicture.Text := FInfo.Picture;
   edtLicenseType.Text := FInfo.LicenseType;
   edtLicenseFile.Text := FInfo.LicenseFile;
-  chkPlatformsWin32.IsChecked := TDNCompilerPlatform.cpWin32 in FInfo.Platforms;
-  chkPlatformsWin64.IsChecked := TDNCompilerPlatform.cpWin64 in FInfo.Platforms;
-  chkPlatformsOSX32.IsChecked := TDNCompilerPlatform.cpOSX32 in FInfo.Platforms;
-  chkPlatformsLinux64.IsChecked := TDNCompilerPlatform.cpLinux64 in FInfo.Platforms;
-  chkPlatformsAndroid.IsChecked := TDNCompilerPlatform.cpAndroid in FInfo.Platforms;
-  chkPlatformsIOS32.IsChecked := TDNCompilerPlatform.cpIOSDevice32 in FInfo.Platforms;
-  chkPlatformsIOS64.IsChecked := TDNCompilerPlatform.cpIOSDevice64 in FInfo.Platforms;
-  cbbPackageCompilerMin.ItemIndex := FInfo.PackageCompilerMin.Frac;
-  cbbPackageCompilerMin.ItemIndex := FInfo.PackageCompilerMax.Frac;
-  cbbCompilerMin.ItemIndex := FInfo.CompilerMin.Frac;
-  cbbCompilerMax.ItemIndex := FInfo.CompilerMax.Frac;
+
+  FPlatformSelector.Platforms := FInfo.Platforms;
+
+  FPackageCompiler.Min := Round(FInfo.PackageCompilerMin);
+  FPackageCompiler.Max := Round(FInfo.PackageCompilerMax);
+
+  FCompiler.Min := Round(FInfo.CompilerMin);
+  FCompiler.Max := Round(FInfo.CompilerMax);
+
   edtFirstVersion.Text := FInfo.FirstVersion;
   edtReportUrl.Text := FInfo.ReportUrl;
   grdDependencies.RowCount := FInfo.Dependencies.Count;
@@ -276,25 +264,13 @@ begin
   FInfo.LicenseType := edtLicenseType.Text;
   FInfo.LicenseFile := edtLicenseFile.Text;
 
-  if chkPlatformsWin32.IsChecked then
-    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpWin32];
-  if chkPlatformsWin64.IsChecked then
-    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpWin64];
-  if chkPlatformsOSX32.IsChecked then
-    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpOSX32];
-  if chkPlatformsLinux64.IsChecked then
-    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpLinux64];
-  if chkPlatformsAndroid.IsChecked then
-    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpAndroid];
-  if chkPlatformsIOS32.IsChecked then
-    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpIOSDevice32];
-  if chkPlatformsIOS64.IsChecked then
-    FInfo.Platforms := FInfo.Platforms + [TDNCompilerPlatform.cpIOSDevice64];
+  FInfo.Platforms := FPlatformSelector.Platforms;
 
-  FInfo.PackageCompilerMin := cbbPackageCompilerMin.ItemIndex + Low(DN.Utils.CDelphiNames);
-  FInfo.PackageCompilerMax := cbbPackageCompilerMax.ItemIndex + Low(DN.Utils.CDelphiNames);
-  FInfo.CompilerMin := cbbCompilerMin.ItemIndex + Low(DN.Utils.CDelphiNames);
-  FInfo.CompilerMax := cbbCompilerMax.ItemIndex + Low(DN.Utils.CDelphiNames);
+  FInfo.PackageCompilerMin := FPackageCompiler.Min;
+  FInfo.PackageCompilerMax := FPackageCompiler.Max;
+
+  FInfo.CompilerMin := FPackageCompiler.Min;
+  FInfo.CompilerMax := FPackageCompiler.Max;
 
   FInfo.RepositoryType := edtRepositoryType.Text;
   FInfo.RepositoryUser := edtRepositoryUser.Text;
@@ -307,8 +283,7 @@ begin
 
 end;
 
-procedure TviewMasterInfo.grdDependenciesGetValue(Sender: TObject; const ACol,
-  ARow: Integer; var Value: TValue);
+procedure TviewMasterInfo.grdDependenciesGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
 begin
   case ACol of
     0:
@@ -322,8 +297,7 @@ begin
   end;
 end;
 
-procedure TviewMasterInfo.grdDependenciesSetValue(Sender: TObject; const ACol,
-  ARow: Integer; const Value: TValue);
+procedure TviewMasterInfo.grdDependenciesSetValue(Sender: TObject; const ACol, ARow: Integer; const Value: TValue);
 var
   LDepen: TInfoDependency;
 begin

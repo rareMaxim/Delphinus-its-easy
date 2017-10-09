@@ -113,7 +113,27 @@
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
-        <DCCReference Include="DIE.Utils.pas"/>
+        <DCCReference Include="..\source\DE.Utils.pas"/>
+        <DCCReference Include="..\source\DE.Constants.pas"/>
+        <DCCReference Include="..\view\Master.Install.EditorSourceFolders.pas">
+            <Form>PathEditor</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="..\view\UI.PlatformSelector.pas">
+            <Form>PlatformSelector</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\view\UI.CompilerVersions.pas">
+            <Form>CompilerVersions</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="..\view\UI.PathEditor.pas">
+            <Form>frmPathEditor</Form>
+            <FormType>fmx</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

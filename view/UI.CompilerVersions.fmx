@@ -1,0 +1,52 @@
+object CompilerVersions: TCompilerVersions
+  Size.Width = 424.000000000000000000
+  Size.Height = 31.000000000000000000
+  Size.PlatformDefault = False
+  object lytPackageCompiler: TLayout
+    Align = Top
+    Padding.Left = 2.000000000000000000
+    Padding.Top = 2.000000000000000000
+    Padding.Right = 5.000000000000000000
+    Padding.Bottom = 2.000000000000000000
+    Size.Width = 424.000000000000000000
+    Size.Height = 27.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object lblMin: TLabel
+      Align = Left
+      Position.X = 2.000000000000000000
+      Position.Y = 2.000000000000000000
+      Size.Width = 58.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Trailing
+      Text = 'Min:   _'
+    end
+    object lblMax: TLabel
+      Align = Left
+      Position.X = 196.000000000000000000
+      Position.Y = 2.000000000000000000
+      Size.Width = 58.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.HorzAlign = Trailing
+      Text = 'Max:   _'
+    end
+    object cbbMax: TComboBox
+      Align = Client
+      Size.Width = 165.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+    end
+    object cbbMin: TComboBox
+      Align = Left
+      Position.X = 60.000000000000000000
+      Position.Y = 2.000000000000000000
+      Size.Width = 136.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+    end
+  end
+end

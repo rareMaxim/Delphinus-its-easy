@@ -1,0 +1,119 @@
+object frmPathEditor: TfrmPathEditor
+  Size.Width = 419.000000000000000000
+  Size.Height = 277.000000000000000000
+  Size.PlatformDefault = False
+  object grpPathes: TGroupBox
+    Align = Top
+    Padding.Left = 2.000000000000000000
+    Padding.Top = 18.000000000000000000
+    Padding.Right = 2.000000000000000000
+    Padding.Bottom = 2.000000000000000000
+    Size.Width = 419.000000000000000000
+    Size.Height = 201.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Pathes'
+    TabOrder = 1
+    object lstPathes: TListBox
+      Align = Client
+      Size.Width = 415.000000000000000000
+      Size.Height = 181.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      DisableFocusEffect = True
+      DefaultItemStyles.ItemStyle = ''
+      DefaultItemStyles.GroupHeaderStyle = ''
+      DefaultItemStyles.GroupFooterStyle = ''
+      OnItemClick = lstPathesItemClick
+      Viewport.Width = 411.000000000000000000
+      Viewport.Height = 177.000000000000000000
+    end
+  end
+  object grpSelectPath: TGroupBox
+    Align = Top
+    Padding.Left = 2.000000000000000000
+    Padding.Top = 18.000000000000000000
+    Padding.Right = 2.000000000000000000
+    Padding.Bottom = 2.000000000000000000
+    Position.Y = 201.000000000000000000
+    Size.Width = 419.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'SelectPath'
+    TabOrder = 2
+    object edt1: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Top
+      TabOrder = 1
+      Position.X = 2.000000000000000000
+      Position.Y = 18.000000000000000000
+      Size.Width = 415.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      OnChangeTracking = edt1ChangeTracking
+      object btnBrowse: TEditButton
+        CanFocus = False
+        Cursor = crArrow
+        Size.Width = 68.000000000000000000
+        Size.Height = 18.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Browse'
+        OnClick = btnBrowseClick
+      end
+    end
+  end
+  object tlb1: TToolBar
+    Padding.Left = 2.000000000000000000
+    Padding.Top = 2.000000000000000000
+    Padding.Right = 2.000000000000000000
+    Padding.Bottom = 2.000000000000000000
+    Position.Y = 249.000000000000000000
+    Size.Width = 419.000000000000000000
+    Size.Height = 26.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object btnAdd: TButton
+      Align = Left
+      Margins.Right = 2.000000000000000000
+      Position.X = 86.000000000000000000
+      Position.Y = 2.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Add'
+      OnClick = btnAddClick
+    end
+    object btnReplace: TButton
+      Align = Left
+      Enabled = False
+      Margins.Left = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Position.X = 4.000000000000000000
+      Position.Y = 2.000000000000000000
+      TabOrder = 1
+      Text = 'Replace'
+      OnClick = btnReplaceClick
+    end
+    object btnDelete: TButton
+      Align = Left
+      Margins.Right = 2.000000000000000000
+      Position.X = 168.000000000000000000
+      Position.Y = 2.000000000000000000
+      TabOrder = 2
+      Text = 'Delete'
+      OnClick = btnDeleteClick
+    end
+    object btn3: TButton
+      Align = Left
+      Enabled = False
+      Position.X = 250.000000000000000000
+      Position.Y = 2.000000000000000000
+      Size.Width = 167.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = 'Delete Invalid Paths'
+    end
+  end
+end

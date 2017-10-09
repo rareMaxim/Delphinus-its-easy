@@ -69,12 +69,12 @@ type
     procedure grdRawFolderGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
     procedure grdProjectsSetValue(Sender: TObject; const ACol, ARow: Integer; const Value: TValue);
     procedure grdBrowsingPathesSetValue(Sender: TObject; const ACol, ARow: Integer; const Value: TValue);
+    procedure grdBrowsingPathesCreateCustomEditor(Sender: TObject; const Column: TColumn; var Control: TStyledControl);
   private
     { Private declarations }
     FInstall: TInstallationFile;
+    FProjectPath: string;
   protected
-    function DelphiIdToName(const AId: Integer): TValue;
-    function DelphiNameToId(const AName: string): Integer;
   public
     { Public declarations }
     procedure ReadModel(const ProjectPath: string);
@@ -90,6 +90,9 @@ implementation
 
 uses
   System.IOUtils,
+  DE.Constants,
+  DE.Utils,
+  Master.Install.EditorBrowsePath,
   DN.Types,
   DN.Utils;
 {$R *.fmx}
@@ -102,37 +105,21 @@ var
 begin
   inherited;
   FInstall := TInstallationFile.Create;
-  for I := Low(DN.Utils.CDelphiNames) to High(DN.Utils.CDelphiNames) do
+  for I := Low(DE.Constants.CDelphiNames) to High(DE.Constants.CDelphiNames) do
   begin
-    pclmn1.Items.Add(DN.Utils.CDelphiNames[I]);
-    pclmn2.Items.Add(DN.Utils.CDelphiNames[I]);
-    pclmn3.Items.Add(DN.Utils.CDelphiNames[I]);
-    pclmn4.Items.Add(DN.Utils.CDelphiNames[I]);
-    pclmn5.Items.Add(DN.Utils.CDelphiNames[I]);
-    pclmn6.Items.Add(DN.Utils.CDelphiNames[I]);
-    pclmn7.Items.Add(DN.Utils.CDelphiNames[I]);
-    pclmn8.Items.Add(DN.Utils.CDelphiNames[I]);
-    pclmn9.Items.Add(DN.Utils.CDelphiNames[I]);
-    pclmn10.Items.Add(DN.Utils.CDelphiNames[I]);
-    pclmn11.Items.Add(DN.Utils.CDelphiNames[I]);
-    pclmn12.Items.Add(DN.Utils.CDelphiNames[I]);
+    pclmn1.Items.Add(DE.Constants.CDelphiNames[I]);
+    pclmn2.Items.Add(DE.Constants.CDelphiNames[I]);
+    pclmn3.Items.Add(DE.Constants.CDelphiNames[I]);
+    pclmn4.Items.Add(DE.Constants.CDelphiNames[I]);
+    pclmn5.Items.Add(DE.Constants.CDelphiNames[I]);
+    pclmn6.Items.Add(DE.Constants.CDelphiNames[I]);
+    pclmn7.Items.Add(DE.Constants.CDelphiNames[I]);
+    pclmn8.Items.Add(DE.Constants.CDelphiNames[I]);
+    pclmn9.Items.Add(DE.Constants.CDelphiNames[I]);
+    pclmn10.Items.Add(DE.Constants.CDelphiNames[I]);
+    pclmn11.Items.Add(DE.Constants.CDelphiNames[I]);
+    pclmn12.Items.Add(DE.Constants.CDelphiNames[I]);
   end;
-end;
-
-function TviewMasterInstall.DelphiIdToName(const AId: Integer): TValue;
-begin
-  if AId >= Low(CDelphiNames) then
-    Result := CDelphiNames[AId];
-end;
-
-function TviewMasterInstall.DelphiNameToId(const AName: string): Integer;
-var
-  I: Integer;
-begin
-  Result := 0;
-  for I := Low(CDelphiNames) to High(CDelphiNames) do
-    if CDelphiNames[I] = AName then
-      Exit(I);
 end;
 
 destructor TviewMasterInstall.Destroy;
@@ -141,8 +128,7 @@ begin
   inherited;
 end;
 
-procedure TviewMasterInstall.grdSourceFoldersGetValue(Sender: TObject; const
-  ACol, ARow: Integer; var Value: TValue);
+procedure TviewMasterInstall.grdSourceFoldersGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
 begin
   case ACol of
     0:
@@ -154,35 +140,40 @@ begin
     3:
       Value := FInstall.SourceFolders[ARow].Base;
     4:
-      Value := DelphiIdToName(FInstall.SourceFolders[ARow].CompilerMin);
+      Value := TUtils.DelphiIdToName(FInstall.SourceFolders[ARow].CompilerMin);
     5:
-      Value := DelphiIdToName(FInstall.SourceFolders[ARow].CompilerMax);
+      Value := TUtils.DelphiIdToName(FInstall.SourceFolders[ARow].CompilerMax);
   end;
 end;
 
-procedure TviewMasterInstall.grdBrowsingPathesGetValue(Sender: TObject; const
-  ACol, ARow: Integer; var Value: TValue);
+procedure TviewMasterInstall.grdBrowsingPathesCreateCustomEditor(Sender: TObject; const Column: TColumn; var Control: TStyledControl);
+var
+  ItemIndex: Integer;
+begin
+  ItemIndex := grdBrowsingPathes.Selected;
+  TPathEditor.EditPath(FProjectPath, FInstall.BrowsingPathes[ItemIndex]);
+end;
+
+procedure TviewMasterInstall.grdBrowsingPathesGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
 begin
   case ACol of
     0:
       Value := FInstall.BrowsingPathes[ARow].Path;
     1:
-      Value := DelphiIdToName(FInstall.BrowsingPathes[ARow].CompilerMin);
+      Value := TUtils.DelphiIdToName(FInstall.BrowsingPathes[ARow].CompilerMin);
     2:
-      Value := DelphiIdToName(FInstall.BrowsingPathes[ARow].CompilerMax);
+      Value := TUtils.DelphiIdToName(FInstall.BrowsingPathes[ARow].CompilerMax);
     3:
       Value := GeneratePlatformString(FInstall.BrowsingPathes[ARow].Platforms);
   end;
 end;
 
-procedure TviewMasterInstall.grdBrowsingPathesSetValue(Sender: TObject; const
-  ACol, ARow: Integer; const Value: TValue);
+procedure TviewMasterInstall.grdBrowsingPathesSetValue(Sender: TObject; const ACol, ARow: Integer; const Value: TValue);
 begin
 //
 end;
 
-procedure TviewMasterInstall.grdExpertsGetValue(Sender: TObject; const ACol,
-  ARow: Integer; var Value: TValue);
+procedure TviewMasterInstall.grdExpertsGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
 begin
   case ACol of
     0:
@@ -196,47 +187,43 @@ begin
   end;
 end;
 
-procedure TviewMasterInstall.grdProjectsGetValue(Sender: TObject; const ACol,
-  ARow: Integer; var Value: TValue);
+procedure TviewMasterInstall.grdProjectsGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
 begin
   case ACol of
     0:
       Value := FInstall.Projects[ARow].Project;
     1:
-      Value := DelphiIdToName(FInstall.Projects[ARow].CompilerMin);
+      Value := TUtils.DelphiIdToName(FInstall.Projects[ARow].CompilerMin);
     2:
-      Value := DelphiIdToName(FInstall.Projects[ARow].CompilerMax);
+      Value := TUtils.DelphiIdToName(FInstall.Projects[ARow].CompilerMax);
   end;
 end;
 
-procedure TviewMasterInstall.grdProjectsSetValue(Sender: TObject; const ACol,
-  ARow: Integer; const Value: TValue);
+procedure TviewMasterInstall.grdProjectsSetValue(Sender: TObject; const ACol, ARow: Integer; const Value: TValue);
 begin
   case ACol of
     0:
       FInstall.Projects[ARow].Project := Value.AsType<string>;
     1:
-      FInstall.Projects[ARow].CompilerMin := DelphiNameToId(Value.AsType<string>);
+      FInstall.Projects[ARow].CompilerMin := TUtils.DelphiNameToId(Value.AsType<string>);
     2:
-      FInstall.Projects[ARow].CompilerMax := DelphiNameToId(Value.AsType<string>);
+      FInstall.Projects[ARow].CompilerMax := TUtils.DelphiNameToId(Value.AsType<string>);
   end;
 end;
 
-procedure TviewMasterInstall.grdRawFolderGetValue(Sender: TObject; const ACol,
-  ARow: Integer; var Value: TValue);
+procedure TviewMasterInstall.grdRawFolderGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
 begin
   case ACol of
     0:
       Value := FInstall.SearchPathes[ARow].Path;
     1:
-      Value := DelphiIdToName(FInstall.SearchPathes[ARow].CompilerMin);
+      Value := TUtils.DelphiIdToName(FInstall.SearchPathes[ARow].CompilerMin);
     2:
-      Value := DelphiIdToName(FInstall.SearchPathes[ARow].CompilerMax);
+      Value := TUtils.DelphiIdToName(FInstall.SearchPathes[ARow].CompilerMax);
   end;
 end;
 
-procedure TviewMasterInstall.grdSearchPathesGetValue(Sender: TObject; const ACol,
-  ARow: Integer; var Value: TValue);
+procedure TviewMasterInstall.grdSearchPathesGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
 begin
   case ACol of
     0:
@@ -250,6 +237,7 @@ end;
 
 procedure TviewMasterInstall.ReadModel(const ProjectPath: string);
 begin
+  FProjectPath := ProjectPath;
   FInstall.LoadFromFile(TPath.Combine(ProjectPath, CInstallFile));
 
   grdSearchPathes.RowCount := Length(FInstall.SearchPathes);

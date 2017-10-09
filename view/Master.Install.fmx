@@ -13,24 +13,23 @@ object viewMasterInstall: TviewMasterInstall
     TabPosition = PlatformDefault
     Sizes = (
       635s
-      424s
+      445s
       635s
-      424s
+      445s
       635s
-      424s
+      445s
       635s
-      424s
+      445s
       635s
-      424s
+      445s
       635s
-      424s)
+      445s)
     object tbtm3: TTabItem
       CustomIcon = <
         item
         end>
       IsSelected = False
-      Size.Width = 94.000000000000000000
-      Size.Height = 26.000000000000000000
+      Size.Height = 5.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
@@ -42,13 +41,13 @@ object viewMasterInstall: TviewMasterInstall
         CanFocus = True
         ClipChildren = True
         Size.Width = 635.000000000000000000
-        Size.Height = 424.000000000000000000
+        Size.Height = 445.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         RowCount = 0
         OnGetValue = grdSearchPathesGetValue
-        Viewport.Width = 631.000000000000000000
-        Viewport.Height = 399.000000000000000000
+        Viewport.Width = 635.000000000000000000
+        Viewport.Height = 445.000000000000000000
         object strngclmn2: TStringColumn
           Header = 'Path'
         end
@@ -68,8 +67,7 @@ object viewMasterInstall: TviewMasterInstall
         item
         end>
       IsSelected = True
-      Size.Width = 107.000000000000000000
-      Size.Height = 26.000000000000000000
+      Size.Height = 5.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
@@ -81,14 +79,16 @@ object viewMasterInstall: TviewMasterInstall
         CanFocus = True
         ClipChildren = True
         Size.Width = 635.000000000000000000
-        Size.Height = 424.000000000000000000
+        Size.Height = 445.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         RowCount = 0
+        Options = [AlternatingRowBackground, Editing, ColumnResize, ColumnMove, ColLines, RowLines, RowSelect, Tabs, Header, HeaderClick, AutoDisplacement]
         OnGetValue = grdBrowsingPathesGetValue
         OnSetValue = grdBrowsingPathesSetValue
-        Viewport.Width = 631.000000000000000000
-        Viewport.Height = 399.000000000000000000
+        OnCreateCustomEditor = grdBrowsingPathesCreateCustomEditor
+        Viewport.Width = 635.000000000000000000
+        Viewport.Height = 445.000000000000000000
         object strngclmn3: TStringColumn
           Header = 'Path'
         end
@@ -99,7 +99,7 @@ object viewMasterInstall: TviewMasterInstall
           Header = 'Compiler Max'
         end
         object clmn2: TColumn
-          Header = 'platforms'
+          Header = 'Platforms'
         end
       end
     end
@@ -108,8 +108,7 @@ object viewMasterInstall: TviewMasterInstall
         item
         end>
       IsSelected = False
-      Size.Width = 98.000000000000000000
-      Size.Height = 26.000000000000000000
+      Size.Height = 5.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
@@ -121,13 +120,13 @@ object viewMasterInstall: TviewMasterInstall
         CanFocus = True
         ClipChildren = True
         Size.Width = 635.000000000000000000
-        Size.Height = 424.000000000000000000
+        Size.Height = 445.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         RowCount = 0
         OnGetValue = grdSourceFoldersGetValue
-        Viewport.Width = 631.000000000000000000
-        Viewport.Height = 399.000000000000000000
+        Viewport.Width = 635.000000000000000000
+        Viewport.Height = 445.000000000000000000
         object strngclmn4: TStringColumn
           Header = 'Folder'
         end
@@ -154,8 +153,7 @@ object viewMasterInstall: TviewMasterInstall
         item
         end>
       IsSelected = False
-      Size.Width = 84.000000000000000000
-      Size.Height = 26.000000000000000000
+      Size.Height = 5.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
@@ -167,13 +165,13 @@ object viewMasterInstall: TviewMasterInstall
         CanFocus = True
         ClipChildren = True
         Size.Width = 635.000000000000000000
-        Size.Height = 424.000000000000000000
+        Size.Height = 445.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         RowCount = 0
         OnGetValue = grdRawFolderGetValue
-        Viewport.Width = 631.000000000000000000
-        Viewport.Height = 399.000000000000000000
+        Viewport.Width = 635.000000000000000000
+        Viewport.Height = 445.000000000000000000
         object strngclmn7: TStringColumn
           Header = 'Folder'
         end
@@ -190,8 +188,7 @@ object viewMasterInstall: TviewMasterInstall
         item
         end>
       IsSelected = False
-      Size.Width = 62.000000000000000000
-      Size.Height = 26.000000000000000000
+      Size.Height = 5.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
@@ -203,14 +200,14 @@ object viewMasterInstall: TviewMasterInstall
         CanFocus = True
         ClipChildren = True
         Size.Width = 635.000000000000000000
-        Size.Height = 424.000000000000000000
+        Size.Height = 445.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         RowCount = 0
         OnGetValue = grdProjectsGetValue
         OnSetValue = grdProjectsSetValue
-        Viewport.Width = 631.000000000000000000
-        Viewport.Height = 399.000000000000000000
+        Viewport.Width = 635.000000000000000000
+        Viewport.Height = 445.000000000000000000
         object strngclmn8: TStringColumn
           Header = 'Project'
         end
@@ -227,8 +224,7 @@ object viewMasterInstall: TviewMasterInstall
         item
         end>
       IsSelected = False
-      Size.Width = 59.000000000000000000
-      Size.Height = 26.000000000000000000
+      Size.Height = 5.000000000000000000
       Size.PlatformDefault = False
       StyleLookup = ''
       TabOrder = 0
@@ -240,13 +236,13 @@ object viewMasterInstall: TviewMasterInstall
         CanFocus = True
         ClipChildren = True
         Size.Width = 635.000000000000000000
-        Size.Height = 424.000000000000000000
+        Size.Height = 445.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
         RowCount = 0
         OnGetValue = grdExpertsGetValue
-        Viewport.Width = 631.000000000000000000
-        Viewport.Height = 399.000000000000000000
+        Viewport.Width = 635.000000000000000000
+        Viewport.Height = 445.000000000000000000
         object strngclmn1: TStringColumn
           Header = 'Expert'
         end
