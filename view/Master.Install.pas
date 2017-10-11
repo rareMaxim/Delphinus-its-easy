@@ -94,7 +94,9 @@ uses
   DE.Utils,
   Master.Install.EditorBrowsePath,
   DN.Types,
-  DN.Utils;
+  DN.Utils,
+  UI.CompilerVersions,
+  DE.Editors;
 {$R *.fmx}
 
 { TviewMasterInstall }
@@ -148,10 +150,17 @@ end;
 
 procedure TviewMasterInstall.grdBrowsingPathesCreateCustomEditor(Sender: TObject; const Column: TColumn; var Control: TStyledControl);
 var
-  ItemIndex: Integer;
+  LRow: Integer;
 begin
-  ItemIndex := grdBrowsingPathes.Selected;
-  TPathEditor.EditPath(FProjectPath, FInstall.BrowsingPathes[ItemIndex]);
+  LRow := grdBrowsingPathes.Row;
+  if (Column = pclmn5) then
+  begin
+    Control := TGridEditors.IDEVersion(TUtils.DelphiIdToName(FInstall.BrowsingPathes[LRow].CompilerMin));
+  end
+  else if (Column = pclmn6) then
+  begin
+    Control := TGridEditors.IDEVersion();
+  end
 end;
 
 procedure TviewMasterInstall.grdBrowsingPathesGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);
@@ -170,7 +179,17 @@ end;
 
 procedure TviewMasterInstall.grdBrowsingPathesSetValue(Sender: TObject; const ACol, ARow: Integer; const Value: TValue);
 begin
-//
+  case ACol of
+
+    0:
+      begin
+
+      end;
+    1:
+      begin
+        FInstall.BrowsingPathes[grdBrowsingPathes.Row].CompilerMin := TUtils.DelphiNameToId(Value.AsString);
+      end;
+  end;
 end;
 
 procedure TviewMasterInstall.grdExpertsGetValue(Sender: TObject; const ACol, ARow: Integer; var Value: TValue);

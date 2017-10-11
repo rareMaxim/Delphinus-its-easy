@@ -115,10 +115,6 @@
         </DCCReference>
         <DCCReference Include="..\source\DE.Utils.pas"/>
         <DCCReference Include="..\source\DE.Constants.pas"/>
-        <DCCReference Include="..\view\Master.Install.EditorSourceFolders.pas">
-            <Form>PathEditor</Form>
-            <FormType>fmx</FormType>
-        </DCCReference>
         <DCCReference Include="..\view\UI.PlatformSelector.pas">
             <Form>PlatformSelector</Form>
             <FormType>fmx</FormType>
@@ -134,6 +130,15 @@
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
+        <DCCReference Include="..\view\Master.Install.EditorBrowsePath.pas">
+            <Form>EdtBrowserPath</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="..\view\Master.Install.EditorSourceFolders.pas">
+            <Form>PathEditor</Form>
+            <FormType>fmx</FormType>
+        </DCCReference>
+        <DCCReference Include="..\source\DE.Editors.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -84,6 +84,8 @@ end;
 
 procedure TMain.FormCreate(Sender: TObject);
 begin
+  ReportMemoryLeaksOnShutdown := True;
+
   viewMaterInfo := TviewMasterInfo.Create(tbtm1);
   viewMaterInfo.Parent := tbtm1;
 

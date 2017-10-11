@@ -1,4 +1,4 @@
-object PathEditor: TPathEditor
+object EdtBrowserPath: TEdtBrowserPath
   Left = 0
   Top = 0
   Caption = 'Path Editor'

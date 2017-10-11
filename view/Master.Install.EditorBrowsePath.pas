@@ -24,7 +24,7 @@ uses
   UI.PathEditor;
 
 type
-  TPathEditor = class(TForm)
+  TEdtBrowserPath = class(TForm)
     lyt1: TLayout;
     btn1: TButton;
     btn2: TButton;
@@ -41,7 +41,7 @@ type
   end;
 
 var
-  PathEditor: TPathEditor;
+  EdtBrowserPath: TEdtBrowserPath;
 
 implementation
 
@@ -49,7 +49,7 @@ uses
   DE.Utils;
 {$R *.fmx}
 
-constructor TPathEditor.Create(AOwner: TComponent);
+constructor TEdtBrowserPath.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
 
@@ -69,17 +69,17 @@ begin
   FCompilerVers.Align := TAlignLayout.Top;
 end;
 
-destructor TPathEditor.Destroy;
+destructor TEdtBrowserPath.Destroy;
 begin
 
   inherited;
 end;
 
-class function TPathEditor.EditPath(const APrjPath: string; var ASerchPath: TSearchPath): Boolean;
+class function TEdtBrowserPath.EditPath(const APrjPath: string; var ASerchPath: TSearchPath): Boolean;
 var
-  MyClass: TPathEditor;
+  MyClass: TEdtBrowserPath;
 begin
-  MyClass := TPathEditor.Create(nil);
+  MyClass := TEdtBrowserPath.Create(nil);
   try
     MyClass.FPathEditor.ProjectPath := APrjPath;
     MyClass.Position := TFormPosition.MainFormCenter;
